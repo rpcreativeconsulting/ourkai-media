@@ -5,16 +5,18 @@ ourkai-brand-kit.md §3 (sizes on a 1080 px post), scaled to the 360 px board
 (1080 / 3). Fonts are served from our own files, never from a font CDN, and
 render.py refuses to export if any font falls back.
 """
+import os as _os
+FONT_URL = "file://" + _os.path.normpath(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "fonts")) + "/"
 
 # Font files. 'local' for rendering here, 'canvas' for the relaunch canvas assets.
 FONT_FILES = {
     'local': {
-        'Fraunces': 'file:///home/claude/relaunch/fonts/Fraunces.woff2',
-        'Fraunces-Italic': 'file:///home/claude/relaunch/fonts/Fraunces-Italic.woff2',
-        'SourceSerif4': 'file:///home/claude/relaunch/fonts/SourceSerif4.woff2',
-        'SourceSerif4-Italic': 'file:///home/claude/relaunch/fonts/SourceSerif4-Italic.woff2',
-        'JetBrainsMono': 'file:///home/claude/relaunch/fonts/JetBrainsMono.woff2',
-        'NotoSerifSC': 'file:///home/claude/relaunch/fonts/NotoSerifSC-ourkai.woff2',
+        'Fraunces': FONT_URL + 'Fraunces.woff2',
+        'Fraunces-Italic': FONT_URL + 'Fraunces-Italic.woff2',
+        'SourceSerif4': FONT_URL + 'SourceSerif4.woff2',
+        'SourceSerif4-Italic': FONT_URL + 'SourceSerif4-Italic.woff2',
+        'JetBrainsMono': FONT_URL + 'JetBrainsMono.woff2',
+        'NotoSerifSC': FONT_URL + 'NotoSerifSC-ourkai.woff2',
     },
     'canvas': {
         'Fraunces': '/_blob/fbe18a7ae8f912f60ba445e96d4af154',

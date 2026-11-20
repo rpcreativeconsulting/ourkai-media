@@ -2,7 +2,7 @@ set -e
 S=src; C=cards
 T=26.94
 ffmpeg -v error -y \
- -i $S/clouds.mp4 -i $S/leaves.mp4 -loop 1 -t 5.5 -i $S/slate.png -i /home/claude/reels/shared/endcard_v2.mp4 \
+ -i $S/clouds.mp4 -i $S/leaves.mp4 -loop 1 -t 5.5 -i ${OURKAI_WORK:-/home/claude/work}/reels/shared/grounds/nightsky.png -i ${OURKAI_WORK:-/home/claude/work}/reels/shared/endcard_v2.mp4 \
  -loop 1 -t $T -i $C/c1.png -loop 1 -t $T -i $C/c2.png -loop 1 -t $T -i $C/c3.png \
  -loop 1 -t $T -i $C/c4.png -loop 1 -t $T -i $C/c5.png \
  -filter_complex "
@@ -20,4 +20,4 @@ ffmpeg -v error -y \
  [8]format=rgba,fade=in:st=17.2:d=0.7:alpha=1,fade=out:st=20.9:d=0.5:alpha=1[o5];
  [base][o1]overlay=shortest=1[v1];[v1][o2]overlay=shortest=1[v2];[v2][o3]overlay=shortest=1[v3];
  [v3][o4]overlay=shortest=1[v4];[v4][o5]overlay=shortest=1,fade=out:st=26.3:d=0.64,format=yuv420p[v]" \
- -map "[v]" -r 24 -c:v libx264 -preset veryfast -crf 18 -movflags +faststart -an R01_same-sky_v4_silent.mp4
+ -map "[v]" -r 24 -c:v libx264 -preset veryfast -crf 18 -movflags +faststart -an R01_same-sky_v5_silent.mp4

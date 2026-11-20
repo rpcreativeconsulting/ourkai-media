@@ -1,5 +1,8 @@
+import os as _os
+_HERE = _os.path.dirname(_os.path.abspath(__file__))
+WORK = _os.environ.get('OURKAI_WORK', '/home/claude/work')
 import sys,os,subprocess
-sys.path.insert(0,'/home/claude/relaunch/engine3')
+sys.path.insert(0,_os.path.normpath(_os.path.join(_HERE, '..')))
 from ourkai_type import css, REQUIRED
 from playwright.sync_api import sync_playwright
 FPS=24; DUR=5.5; N=int(FPS*DUR)
@@ -26,7 +29,7 @@ os.makedirs('frames',exist_ok=True)
 with sync_playwright() as p:
     b=p.chromium.launch(executable_path='/usr/bin/google-chrome',args=['--allow-file-access-from-files'])
     pg=b.new_page(viewport={'width':1080,'height':1920})
-    pg.goto('file:///home/claude/reels/shared/endcard.html')
+    pg.goto(f'file://{WORK}/reels/shared/endcard.html')
     pg.evaluate("(req)=>Promise.all(req.map(f=>document.fonts.load(f,'Aǎ天'))).then(()=>document.fonts.ready)",REQUIRED)
     for i in range(N):
         pg.evaluate(f"at({i/FPS})")

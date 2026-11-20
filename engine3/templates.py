@@ -7,8 +7,11 @@ T4 Character · solar terms, stems   · shared paper or slate      · one large 
 T5 Question  · find yourself        · shared paper or slate      · a large question, readable as a thumbnail
 T6 Brand     · oürkai centers       · the bowl hero              · official lockup only
 """
+import os as _os
+_HERE = _os.path.dirname(_os.path.abspath(__file__))
+WORK = _os.environ.get('OURKAI_WORK', '/home/claude/work')
 import sys
-sys.path.insert(0, '/home/claude/relaunch/engine3')
+sys.path.insert(0, _os.path.normpath(_os.path.join(_HERE, '.')))
 from ourkai_type import tile, DARK, LIGHT
 
 

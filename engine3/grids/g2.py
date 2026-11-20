@@ -4,7 +4,7 @@ Approved by Ryan in the Nov 17 chat "Current Social Plan - Organizing brand asse
 (Grids 1-4 draft), rebuilt and checked Nov 18. Do not reinterpret: build exactly this.
 
 Backgrounds are Runway task ids. Signed URLs expire after a day, so fetch a fresh URL with
-Runway get_task(id) and save it to /home/claude/relaunch/render/bg/<bg>.png before building.
+Runway get_task(id) and save it to $OURKAI_WORK/bg/<bg>.png before building.
 paper and slate are the shared textures for graphic tiles.
 
 Look rules (match the live Grid 1):
@@ -22,6 +22,9 @@ Nov 18 revision (Ryan chose set B): 10 frost on glass, 11 rings on water, 13 dee
 13 is a deliberate dark corner: it breaks the light/dark checkerboard at 6 NW by choice.
 redwood and hills are retired from this grid (kept in BACKGROUNDS for reference).
 """
+import os as _os
+_HERE = _os.path.dirname(_os.path.abspath(__file__))
+WORK = _os.environ.get('OURKAI_WORK', '/home/claude/work')
 
 BACKGROUNDS = {
     'redwood': 'de9c577a-0faf-4fde-9b31-231e17e72251',   # G2-4SE · pale mist in a redwood forest
@@ -37,31 +40,31 @@ BACKGROUNDS = {
 
 # template: horizon | sky | plate | character | question  (engine3/templates.py)
 TILES = [
-    dict(post=10, template='horizon', bg='frost', dark=False, kicker='The five elements', palace='4 · SE · 10',
+    dict(post=10, slug='phases-not-things', template='horizon', bg='frost', dark=False, kicker='The five elements', palace='4 · SE · 10',
          head="They're phases, not things.", body='Wood, Fire, Earth, Metal, Water:', accent='five ways energy moves.'),
-    dict(post=15, template='horizon', bg='ember', dark=True, kicker='The cycles', palace='9 · S · 15',
+    dict(post=15, slug='everything-feeds', template='horizon', bg='ember', dark=True, kicker='The cycles', palace='9 · S · 15',
          head='Everything feeds something.', body='Wood feeds Fire. Fire makes Earth.', accent='The Production cycle.'),
-    dict(post=11, template='sky', bg='rings', dark=False, kicker='The five elements', palace='2 · SW · 11',
+    dict(post=11, slug='your-center', template='sky', bg='rings', dark=False, kicker='The five elements', palace='2 · SW · 11',
          head='Which element is your center?', body='Your Day Master belongs to one of five.', accent='Which is yours?'),
-    dict(post=16, template='sky', bg='rain', dark=True, kicker='The cycles', palace='3 · E · 16',
+    dict(post=16, slug='everything-checked', template='sky', bg='rain', dark=True, kicker='The cycles', palace='3 · E · 16',
          head='Everything is checked by something.', body='Water puts out Fire. Fire melts Metal.', accent='The Controlling cycle.'),
-    dict(post=14, template='character', bg='paper', dark=False, kicker='大雪 · Major Snow', palace='5 · Center · 14', char='大雪',
+    dict(post=14, slug='major-snow', template='character', bg='paper', dark=False, kicker='大雪 · Major Snow', palace='5 · Center · 14', char='大雪',
          head='The darkest month begins.', body='Dec 6, 6:52 PM Pacific.', accent='Dec 7 in Asia.'),
-    dict(post=17, template='plate', bg='slate', dark=True, kicker='The cycles', palace='7 · W · 17', art=('cycle', True, True),
+    dict(post=17, slug='feed-can-tire', template='plate', bg='slate', dark=True, kicker='The cycles', palace='7 · W · 17', art=('cycle', True, True),
          head='What you feed can tire you.', body='Fire burns through Wood. Wood drinks Water.', accent='The Weakening cycle.', cta='Save this'),
-    dict(post=12, template='plate', bg='paper', dark=False, kicker='The five elements', palace='8 · NE · 12', art=('five_seasons', False),
+    dict(post=12, slug='every-season', template='plate', bg='paper', dark=False, kicker='The five elements', palace='8 · NE · 12', art=('five_seasons', False),
          head='One element for every season.', body=None, accent=None, cta='Swipe for all five →', carousel='slides 2-5 to build'),
-    dict(post=18, template='question', bg='slate', dark=True, kicker='Find yourself', palace='1 · N · 18',
+    dict(post=18, slug='who-feeds-you', template='question', bg='slate', dark=True, kicker='Find yourself', palace='1 · N · 18',
          head='Who feeds you? Who drains you?', sub='The same three cycles run between people.', cta='Tag someone'),
-    dict(post=13, template='character', bg='indigo', dark=True, kicker='Find yourself', palace='6 · NW · 13', char='水',
+    dict(post=13, slug='winter-water', template='character', bg='indigo', dark=True, kicker='Find yourself', palace='6 · NW · 13', char='水',
          head='Winter belongs to Water.', body='Right now, the season is', accent="Water's."),
 ]
 
 
-def build(bgdir='/home/claude/relaunch/render/bg'):
+def build(bgdir=_os.path.join(WORK, 'bg')):
     """Return [(post, html)] in profile order, using the engine3 templates."""
     import sys
-    sys.path.insert(0, '/home/claude/relaunch/engine3')
+    sys.path.insert(0, _os.path.normpath(_os.path.join(_HERE, '..')))
     import ourkai_type as T
     T.DARK['label'] = T.DARK['soft']
     T.LIGHT['label'] = T.LIGHT['soft']

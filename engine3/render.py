@@ -1,7 +1,10 @@
 """Render a board to PNG, and refuse if any brand font did not load."""
+import os as _os
+_HERE = _os.path.dirname(_os.path.abspath(__file__))
+WORK = _os.environ.get('OURKAI_WORK', '/home/claude/work')
 import sys
 from playwright.sync_api import sync_playwright
-sys.path.insert(0, '/home/claude/relaunch/engine3')
+sys.path.insert(0, _os.path.normpath(_os.path.join(_HERE, '.')))
 from ourkai_type import REQUIRED
 
 
