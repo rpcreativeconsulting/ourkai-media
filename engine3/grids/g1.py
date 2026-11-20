@@ -7,7 +7,7 @@ them to the palace grey).
 
 Backgrounds: Runway task ids below; fetch fresh URLs with Runway get_task and save each as
 $OURKAI_WORK/bg/<name>.png. 'bowl' (post 5) is Runway asset a2cd21e6, made by Ryan in the
-Runway app; it has no task URL, so post 5 can only be rebuilt once that file is supplied.
+Runway app; it has no task URL, Ryan supplied the file on Nov 20; it lives in the repo as media/sources/bowl.png.
 
 Layout on the profile (Lo Shu, newest top left):
     6 · 4 SE   1 · 9 S    7 · 2 SW
@@ -89,7 +89,9 @@ def build(bgdir=None):
         if k == 'brand':
             if not _os.path.exists(f"{bgdir}/{t['bg']}.png"):
                 continue
-            h = TP.brand(src, t['palace'])
+            lock = _os.path.normpath(_os.path.join(_HERE, '..', 'reels', 'lockup.svg'))
+            h = TP.brand(src, t['palace']).replace('</div></div>', '</div>'
+                f'<img src="file://{lock}" alt="" style="position:absolute;left:50%;top:86px;width:196px;transform:translateX(-50%)"></div>', 1)
         elif k == 'horizon':
             h = TP.horizon(src, t['dark'], t['kicker'], t['palace'], t['head'], t.get('body'), t.get('accent'), t.get('cta'))
         elif k == 'sky':

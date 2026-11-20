@@ -4,4 +4,4 @@ Rebuilt Nov 20 from `engine3/grids/g1.py` (backgrounds from their Runway task id
 
 Post 3 is a carousel: `G1-3_four-systems.png` plus slides 2–5.
 
-**Missing: post 5** "Your Life Unlocked." (the stone bowl with the official lockup). Its background is Runway asset a2cd21e6, made in the Runway app, which has no downloadable task link. Add the bowl image as `$OURKAI_WORK/bg/bowl.png` and rebuild with `python3 engine3/build_grid.py 1 --tiles`.
+Post 5 "Your Life Unlocked.": Ryan's stone bowl (`media/sources/bowl.png`, supplied Nov 20) with the official vertical lockup. The live post's tagline has short gold rules either side; the official lockup file has none, so this rebuild follows the official file.
