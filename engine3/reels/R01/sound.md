@@ -20,3 +20,5 @@ Text-only v1 prompt: full continuous meadow soundscape, steady wind through leav
 Question card (Ryan, Nov 22): "Whose day never looks like yours?" / SEND THIS TO THEM replaced by "How is today meeting you?" / COMMENT ONE WORD. Only the card's words changed: same night-sky ground (Runway 2c5a0542), same timings, so the text-only sound fits unchanged. New picture: picture/R01_picture_silent_v6.mp4.
 
 Preview: preview/R01_same-sky_v6_preview.mp4 (new card + text-only sound; not approved, not in Vista).
+
+| snd/R01_snd_text_v2.wav | 4f97cd29-ff40-48c8-af6a-bae4e3be3814 | Ryan: text v1 had no audible birds or breeze (measured: steady hiss, over half its energy at 3-8 kHz) and should be softer. v2 asks for breeze swells and distinct birdsong. Result: birds and breeze present, but -22.6 LUFS (no softer: text mode lands near -22 LUFS whatever the prompt says), peak -0.7 dBTP, a bird burst at 25.5 s under the end card. Preview: preview/R01_same-sky_v7_preview.mp4 |
