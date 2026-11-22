@@ -41,31 +41,39 @@ SOUND RULES (Ryan, Nov 22; replaces the Nov 18 mixing rules and the clean_audio.
 - Runway video clips come back with their own generated audio: never use it (generateAudio false).
 
 3. Where sound is made (Ryan, Nov 22): Runway only. ElevenLabs is not used for Reels or social.
-- Default: Runway Mirelo SFX 2 (mirelo-sfx-2) scores the finished, silent picture and returns one sound track for the whole Reel, matched to it scene by scene. Output format wav. About 2 credits per second (a 27 s Reel is about 54 credits).
-- The silent picture is a stream copy of the cut (video copied, no re-encode), committed to the Reel's folder in ourkai-media at engine3/reels/R##/picture/R##_picture_silent.mp4, and given to Runway by its public CDN link: https://cdn.jsdelivr.net/gh/rpcreativeconsulting/ourkai-media@<branch>/engine3/reels/R##/picture/R##_picture_silent.mp4
-- The finished track is committed to engine3/reels/R##/snd/ as delivered, with its prompt and task id in engine3/reels/R##/sound.md. Git is the record of every Reel's sound, so reuse is easy to spot.
-- Fallback: Runway sound effects (sound-effects), one bed per scene at its exact length. Their beds have carried an electrical hum; a bed with hum is regenerated, never filtered.
-
+- Default: Runway Mirelo SFX 2 (mirelo-sfx-2) from TEXT ONLY, no picture. One continuous track for the whole Reel at its exact length, format wav, about 2 credits per second (a 27 s Reel is about 54 credits). Tested Nov 22 on R01: right level and the cleanest result.
+- Why not score from the picture: when Mirelo scores the video, the picture overrides the prompt. Quiet-looking shots (paper, shadows, night, dark cards) come back near-silent, and a mains hum lives in that near-silence. Four picture-scored passes on R01 and R03 failed this way; one on R02 passed. Picture scoring is only for Reels whose every scene reads as full and outdoor.
+- Keep the bed full: one continuous natural source runs under every scene (wind through leaves, rain, a stream), with the scene's own detail on top. No near-silent passage until the final fade.
+- The finished track is committed to engine3/reels/R##/snd/ as delivered, with its prompt, task id and checks in engine3/reels/R##/sound.md. Git is the record of every Reel's sound, so reuse is easy to spot.
+- Fallback: Runway sound effects (sound-effects), one bed per scene at its exact length, placed end to end. These have carried a hum; a bed with hum is regenerated, never filtered.
+- Video clips' own generated audio is never used (generateAudio false).
 
 4. How sound is placed (the only thing done to it).
-- With Mirelo: the one track sits under the whole Reel from frame 1, as delivered.
+- With Mirelo: the one track sits under the whole Reel from frame 1, as delivered. Scene times in the prompt come from the cut's build.sh (the middle of each cross-fade).
 - With the fallback: one bed per scene, generated at the scene's exact length, with its own fade in and fade out written into the prompt. Beds are placed end to end on the timeline under their scenes. Where two scenes share a sound, generate one bed for both at their combined length.
 - The question card and end card share one bed of their own (near-silence, see the templates), generated at their combined length, fading to silence by the last frame.
 - Beds are put into the video as generated. If the file format has to change for Instagram (AAC in the mp4), that is one straight encode at 48 kHz, 256 kbps, with no filters. Nothing else touches the audio.
 
 5. Check, don't fix. Measurement only; the file is never changed by the check.
 - Loudness: integrated −26 to −18 LUFS, true peak no higher than −1 dBTP (ffmpeg ebur128, measure only).
-- Hum: no steady tone at 50, 60, 100, 120 Hz or their multiples, no sub-bass drone (spectrum check, measure only).
+- Hum: in every 1 s window, the energy within 1.5 Hz of 50, 60, 100 and 120 Hz must stay at least 30 dB below the whole bed (measure only). A tone that only stands out against a near-silent bed is still a fail, because that is exactly when it is heard. Reference: R01 text v1 −42 dB (pass), R02 v2 −26 dB (approved before this check), R01 scored v2 −10 dB (fail).
 - Length: within 0.1 s of the scene it sits under.
 - Fails any check: regenerate with the prompt adjusted (quieter, softer, more distant, fewer sources), never filter.
 
-SOUND PROMPT TEMPLATE (Runway Mirelo SFX 2, scoring the silent picture)
+SOUND PROMPT TEMPLATE (Runway Mirelo SFX 2, text only)
 
-Settings: model mirelo-sfx-2 · video = the silent picture's CDN link · duration = the Reel's exact length · format wav · one task (never re-run the same request).
+Settings: model mirelo-sfx-2 · no video · duration = the Reel's exact length · format wav · one task (never re-run the same request).
 
 promptText, in this order:
-1. One line for the whole piece: "A calm natural soundscape that follows the picture from <start> into <end>."
-2. One line per scene, with its times: "<from> to <to> seconds, <what is on screen>: <its sound source, the space, how far away>." Sources from SOUND FOR EACH SCENE below.
+1. The whole piece: "A full, continuous natural soundscape <where>, <length> seconds, soft but full and clearly present the whole way through, never thin or silent, at an even level."
+2. The bed: "A steady gentle <wind through many leaves / soft rain / a stream> runs under the whole piece without a break, like a soft wash."
+3. One line per scene, with its times, adding that scene's detail on top of the bed: "<from> to <to> seconds: <detail>." Sources from SOUND FOR EACH SCENE below. Describe sounds only, not pictures.
+4. The question card and end card: keep the bed going with one quiet detail that fits the Reel's idea (crickets, a distant bird, drips), then "<from> to <end> seconds: <bed and detail> slowly fade out to complete silence over the last two seconds." Change the detail for each Reel; never reuse the wording.
+5. "Starts softly from silence over the first second. Natural, airy, like a clean outdoor field recording with no equipment noise."
+
+negativePrompt, every time: "music, melody, tones, hum, mains hum, 50 Hz hum, 60 Hz hum, buzz, electrical drone, fridge, air conditioner, fan, room tone, indoor silence, near silence, quiet pauses, low rumble, sub-bass, traffic, airplane, voices, speech, footsteps, clicks, impacts, whooshes, risers, sudden or loud sounds, wind gusts, thunder" (add scene-specific items, e.g. "sharp pops, loud snaps" for fire, "crashing waves" for sea).
+
+SOUND FOR EACH SCENE below.
 3. The question card and end card: "<from> to <end> seconds, a still dark card with words, then a logo on black: almost silent <air or room tone that fits the Reel's idea>, fading to complete silence by the last second." Change the detail for each Reel; never reuse the wording.
 4. Level, every time: "Very quiet throughout, soft and sparse, gentle and even, like a clean natural field recording. Begins softly from silence."
 
@@ -118,7 +126,7 @@ ORDER OF WORK (cheapest first)
 8. Only then animate it: 5 seconds, 9:16, 720p for drafts, with generated audio off.
 9. Upscale only the clip that is approved as final.
 10. Use the cheaper model for tests.
-11. Sound last: once the cut and its timings are locked, commit the silent picture and score it with Mirelo.
+11. Sound last: once the cut and its timings are locked, generate the text-only track at the exact length, check it, and commit it.
 
 WHEN SOMETHING GOES WRONG
 12. A result with text, letters, logos, people, faces or hands, or anything off-brand: say so and stop.
