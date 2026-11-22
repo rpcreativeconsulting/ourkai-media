@@ -30,3 +30,19 @@ Previews: preview/R03_phases_v3_sound-v1.mp4 and preview/R03_phases_v3_sound-v2.
 | snd/R03_scene_F_question-end_v1.wav | 61dc657c-ea76-4811-ab4b-46eaea851011 | 9.06 s, -26.3, starts with a loud burst, fades out; hum -10 (fail) |
 
 Per-scene beds do give each scene its own space (their spectra differ), but levels jump up to 21 dB between scenes (fire -38, metal -17), edges are hard, and five of six fail the hum check. Back to back with no processing they cannot make a smooth Reel.
+
+### Option 1: light assembly (Ryan, Nov 22)
+
+Ryan approved light assembly for multi-scene soundscapes: one flat level per scene, short cross-fades on the cuts (0.15 s each side), a 0.5 s fade-in at frame 1. No filters, no compression, no reshaping. Script: engine3/reels/R03/assemble_sound.py.
+
+Remakes:
+| File | Runway task | Checks |
+|---|---|---|
+| snd/R03_scene_B_fire_v2.wav | 94adeff0-f786-45f1-b23b-c115ac12578c | Mirelo. -38.3 rms, crackle peaks -4.5; no hum. Used (fire is quiet with sharp crackle on every model; its level is set by its peaks) |
+| snd/R03_scene_D_metal_v2.wav | 1a937441-7abf-4139-96a5-781e5f5eb799 | Mirelo. Hum. Rejected |
+| snd/R03_scene_F_question-end_v2.wav | fb06bbbf-f17b-41f7-8e93-7da2e0de9ba1 | Mirelo. Hum, no fade. Rejected |
+| snd/R03_scene_B_fire_v3.mp3 | 4b450763-301a-47bb-8ba3-0da888da666e | Runway sound-effects. Even quieter with pops (crest 37.7 dB). Not used |
+| snd/R03_scene_D_metal_v3.mp3 | da15a46b-06b9-459c-b1eb-fd3df7aa980e | Runway sound-effects. -26.8, no hum, soft in and out. Used |
+| snd/R03_scene_F_question-end_v3.mp3 | e08b6bac-62e2-418e-8feb-5d54c11a8f4a | Runway sound-effects. -40.5 (raised 13.5 dB), no hum, fades to silence. Used |
+
+Assembled: snd/R03_snd_assembled_v1.wav from wood v1, fire v2, earth v1, metal v3, water v1, question/end v3. Levels: wood -2.4 dB, fire 0, earth -1.7, metal -0.2, water -2.4, question/end +13.5 (scenes at about -24 dBFS rms; fire set by its crackle peaks so it sits lower). Whole: -25.3 LUFS, true peak -2.3 dBTP. Preview: preview/R03_phases_v5_natural-preview.mp4.
