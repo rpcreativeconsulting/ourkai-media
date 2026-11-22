@@ -10,3 +10,9 @@ Picture: picture/R03_picture_silent.mp4 (stream copy of media/reels/G2/R03_phase
 | snd/R03_snd_scored_v2.wav | c6f79082-8e0c-4eed-82e1-c7cf09a4146c | -21.7 LUFS (in range). Strong hum under the redwood opening 0-8 s (+27 dB). Waves much louder than the rest (-10.8 dBFS at 18.7 s) |
 
 Previews: preview/R03_phases_v3_sound-v1.mp4 and preview/R03_phases_v3_sound-v2.mp4, for Ryan to choose. Not in Vista.
+
+## Music version (Ryan, Nov 22: R03 in the new instrumental style)
+
+| File | Runway task | Checks |
+|---|---|---|
+| snd/R03_music_v1.mp3 | 1e83ca79-2cd3-4b0c-b418-5fb39becfd28 | Five-layer build, deep house / lo-fi, asked 125 BPM half-time (two bars per 3.84 s element): Wood nylon guitar + soft birds; Fire Rhodes + faint ember crackle; Earth bass + soft kick; Metal vibraphone; Water pad + shaker + faint waves; drums drop for the question; outro fade. Came back 31.0 s, about 127 BPM (later layers may land slightly early), -20.4 LUFS, peak -1.9 dBTP, 1.2% above 2 kHz, quiet by 30 s. Used as delivered. Preview: preview/R03_phases_v4_music-preview.mp4 |
