@@ -26,6 +26,6 @@ Question card (Ryan, Nov 22): "Which do you have too much of?" replaced by "Is y
 
 | File | Runway task | Checks |
 |---|---|---|
-| snd/R02_music_v2.mp3 | ca14852d-ccb2-4c16-835b-af48945424ac | Same dusk neo-soul track, instruments only (no birds; 0.16% of energy in the 3-8 kHz birdsong range): muted guitar figure, Rhodes, bass, soft kick, snaps, shaker, pad. 88 BPM, 27.1 s, -15.1 LUFS, peak -1.0 dBTP, fades to silence by 26 s. Used as delivered, under the new question card (picture v5). Preview: preview/R02_light-needs-shadow_v6_preview.mp4 |
+| snd/R02_music_v2.mp3 | ca14852d-ccb2-4c16-835b-af48945424ac | Same dusk neo-soul track, instruments only (no birds; 0.16% of energy in the 3-8 kHz birdsong range): muted guitar figure, Rhodes, bass, soft kick, snaps, shaker, pad. 88 BPM, 27.1 s, -15.1 LUFS, peak -1.0 dBTP, fades to silence by 26 s. Used as delivered, under the new question card (picture v5). Preview: preview/R02_light-needs-shadow_v6_preview.mp4. Approved by Ryan Nov 22 and swapped into the Wed Nov 25 Vista posts with the new caption; final copy media/reels/G1/R02_light-needs-shadow.mp4. |
 
 The v1 track (with evening birds) is retired under the never-both rule.
