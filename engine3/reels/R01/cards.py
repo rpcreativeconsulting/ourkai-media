@@ -35,7 +35,7 @@ CARDS={
  'c2':card(False,bottom=470,head='Everyone wakes up<br>to the same date.',hm=True),
  'c3':card(False,bottom=470,head='Each day is one pillar.',hm=True,body='In Chinese timing, the days turn through a cycle of sixty, the',accent='<span class="py">Jiǎzǐ</span>.'),
  'c4':card(False,bottom=470,head='It meets every chart differently.',hm=True,body='The day that pushes one person forward',accent='asks another to wait.'),
- 'c5':card(True,top=700,center=True,kicker='Your turn',head='Whose Tuesday<br>never looks<br>like yours?',cta='Send this to them'),
+ 'c5':card(True,top=700,center=True,kicker='Your turn',head='Whose day<br>never looks<br>like yours?',cta='Send this to them'),
  'c6':'<div class="blk" style="top:1330px;text-align:center"><div class="b" style="color:#b0a78f;font-size:40px">Coming soon to the App Store.</div></div>',
 }
 with sync_playwright() as p:
