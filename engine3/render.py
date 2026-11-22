@@ -8,6 +8,21 @@ sys.path.insert(0, _os.path.normpath(_os.path.join(_HERE, '.')))
 from ourkai_type import REQUIRED
 
 
+SMART_QUOTES_JS = r"""() => {
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {acceptNode: n =>
+    (n.parentElement && ['STYLE','SCRIPT'].includes(n.parentElement.tagName)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT});
+  let n, fixed = 0;
+  while ((n = w.nextNode())) {
+    const t = n.nodeValue;
+    const u = t.replace(/(\w)'(\w)/g, '$1\u2019$2')
+               .replace(/(^|[\s(\[\u2014-])'/g, '$1\u2018').replace(/'/g, '\u2019')
+               .replace(/(^|[\s(\[\u2014-])"/g, '$1\u201c').replace(/"/g, '\u201d');
+    if (u !== t) { n.nodeValue = u; fixed++; }
+  }
+  return fixed;
+}"""
+
+
 def render(html_path, png_path, width=1088, height=1448, scale=1):
     with sync_playwright() as p:
         b = p.chromium.launch(executable_path='/usr/bin/google-chrome', args=['--allow-file-access-from-files'])
@@ -15,6 +30,7 @@ def render(html_path, png_path, width=1088, height=1448, scale=1):
         pg.goto('file://' + html_path)
         pg.evaluate("(req) => Promise.all(req.map(f => document.fonts.load(f, 'Aǎ天'))).then(() => document.fonts.ready)", REQUIRED)
         pg.wait_for_timeout(500)
+        pg.evaluate(SMART_QUOTES_JS)  # curly quotes and apostrophes on every tile (Reels lesson, Nov 22)
         missing = pg.evaluate("(req) => req.filter(f => !document.fonts.check(f, 'Aǎ天') || ![...document.fonts].some(ff => f.includes(ff.family) && ff.status === 'loaded'))", REQUIRED)
         used = pg.evaluate("[...document.fonts].filter(f=>f.status==='loaded').map(f=>f.family+' '+f.style+' '+f.weight)")
         if missing:
