@@ -16,3 +16,17 @@ Previews: preview/R03_phases_v3_sound-v1.mp4 and preview/R03_phases_v3_sound-v2.
 | File | Runway task | Checks |
 |---|---|---|
 | snd/R03_music_v1.mp3 | 1e83ca79-2cd3-4b0c-b418-5fb39becfd28 | Five-layer build, deep house / lo-fi, asked 125 BPM half-time (two bars per 3.84 s element): Wood nylon guitar + soft birds; Fire Rhodes + faint ember crackle; Earth bass + soft kick; Metal vibraphone; Water pad + shaker + faint waves; drums drop for the question; outro fade. Came back 31.0 s, about 127 BPM (later layers may land slightly early), -20.4 LUFS, peak -1.9 dBTP, 1.2% above 2 kHz, quiet by 30 s. Used as delivered. Preview: preview/R03_phases_v4_music-preview.mp4 |
+
+## Natural sound, each scene its own space (Ryan, Nov 22)
+
+| File | Runway task | Checks |
+|---|---|---|
+| snd/R03_snd_text_v1.wav | 84fb017f-ef3d-4dcf-b857-af1f88a1430a | Rejected: one prompt for all seven spaces came back as one low wind/surf sound in every scene (about 79% of energy at 250-1000 Hz throughout), no fade, hum -21.5 dB at 13 s |
+| snd/R03_scene_A_wood_v1.wav | 4bc65c9a-58b3-4bbb-aaa0-d94063d71c15 | 6.25 s, -21.6 dBFS, mostly treetop wind, birds faint; no hum (-51); starts full, not from silence |
+| snd/R03_scene_B_fire_v1.wav | 65272fd2-bb7c-4659-b1cc-60b37b232135 | 3.84 s, very quiet (-37.8) with sharp crackle peaks (-5.6); hum -19 (fail) |
+| snd/R03_scene_C_earth_v1.wav | 5b86b4fd-95ec-42e6-a5cc-451406ce52ba | 3.84 s, -25.5, grass rustle (bright); hum -21 (fail) |
+| snd/R03_scene_D_metal_v1.wav | bc73e067-9975-472e-a946-057f43590313 | 3.84 s, loud (-17.1), peak -1.0, ends abruptly; hum -24 (fail) |
+| snd/R03_scene_E_water_v1.wav | a2140f7d-2f99-41b2-a110-0efcb43883f4 | 3.84 s, -21.6, gentle waves; hum -23 (fail) |
+| snd/R03_scene_F_question-end_v1.wav | 61dc657c-ea76-4811-ab4b-46eaea851011 | 9.06 s, -26.3, starts with a loud burst, fades out; hum -10 (fail) |
+
+Per-scene beds do give each scene its own space (their spectra differ), but levels jump up to 21 dB between scenes (fire -38, metal -17), edges are hard, and five of six fail the hum check. Back to back with no processing they cannot make a smooth Reel.
