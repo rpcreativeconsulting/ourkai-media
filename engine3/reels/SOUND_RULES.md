@@ -30,7 +30,7 @@ The sound follows the picture. The music changes where the picture changes, and 
 
 SOUND RULES (Ryan, Nov 22; replaces the Nov 18 mixing rules and the clean_audio.py step)
 
-0. Music by default (Ryan, Nov 22). Every Reel gets its own modern, mellow instrumental, made in Runway for that Reel. Natural sound (birds chirping, rain, water, fire) is written into the music prompt when the Reel's idea calls for it, mixed low. A pure natural soundscape (no music) is the exception, used only when Ryan asks for one.
+0. Music by default (Ryan, Nov 22). Every Reel gets its own modern, mellow instrumental, made in Runway for that Reel. Natural sound (birds chirping, rain, water, fire) is written into the music prompt when the Reel's idea calls for it, mixed low. A pure natural soundscape (no music) is used when Ryan asks for one, typically when each scene is its own place (R03, five elements).
 
 1. Clean from the start. No cleanup.
 - Processing a generated bed breaks it. No notch filters, no EQ, no high-pass, no denoise, no loudness normalisation, no compression, no fades, no trims, no cross-fades, no layering or mixing two beds together, no speed or pitch change. engine3/reels/clean_audio.py is retired.
@@ -49,6 +49,9 @@ SOUND RULES (Ryan, Nov 22; replaces the Nov 18 mixing rules and the clean_audio.
 - Natural soundscape (only when asked): Runway Mirelo SFX 2 from TEXT ONLY (no picture), one continuous track, wav. Never score from the picture: quiet-looking shots come back near-silent with a mains hum (four failed passes on R01 and R03, Nov 22). Keep a full bed under every scene.
 - Every track is committed to engine3/reels/R##/snd/ as delivered, with its prompt, task id and checks in engine3/reels/R##/sound.md. Git is the record, so reuse is easy to spot.
 - Video clips' own generated audio is never used (generateAudio false).
+- Multi-scene natural soundscapes (Ryan, Nov 22, R03): one bed per scene, each generated for exactly its scene's length with a short single-sound prompt, then lightly assembled: one flat level per bed (about −24 dBFS rms; a crackly bed like fire is set by its peaks so it never clips), a 0.15 s fade at each edge (a 0.3 s cross-fade across each cut), and a 0.5 s fade-in at frame 1. Nothing else: no filters, no compression, no reshaping. Script: engine3/reels/R03/assemble_sound.py (copy per Reel and change the BEDS list). One long prompt describing several places does not work: the model blends them into one sound.
+- Which model for short beds: Runway sound-effects (the default sound model) is the more reliable for short, single-place beds (clean, follows the prompt, fades in and out by itself); Mirelo SFX 2 short clips often carried a hum. Use Mirelo text-only for longer continuous beds.
+
 
 4. How sound is placed (the only thing done to it).
 - Music or soundscape: the one track sits under the whole Reel from frame 1, as delivered. Scene times in the prompt come from the cut's build.sh (the middle of each cross-fade).
@@ -58,7 +61,7 @@ SOUND RULES (Ryan, Nov 22; replaces the Nov 18 mixing rules and the clean_audio.
 
 5. Check, don't fix. Measurement only; the file is never changed by the check.
 - Loudness: soundscapes −26 to −18 LUFS; music −18 to −13 LUFS (normal for music; R01's approved track −15.3). True peak no higher than −0.5 dBTP (ffmpeg ebur128, measure only).
-- Hum: in every 1 s window, the energy within 1.5 Hz of 50, 60, 100 and 120 Hz must stay at least 30 dB below the whole bed (measure only). A tone that only stands out against a near-silent bed is still a fail, because that is exactly when it is heard. Reference: R01 text v1 −42 dB (pass), R02 v2 −26 dB (approved before this check), R01 scored v2 −10 dB (fail).
+- Hum: in every 1 s window, a fail is a narrow tone at 50, 60, 100 or 120 Hz that stands more than 15 dB above its neighbouring frequencies AND is within 40 dB of the whole bed (measure only). Wind and waves are naturally heavy in the low end, so energy there alone is not hum; a tone sticking out is.
 - Length: within 0.1 s of the scene it sits under.
 - Fails any check: regenerate with the prompt adjusted (quieter, softer, more distant, fewer sources), never filter.
 
