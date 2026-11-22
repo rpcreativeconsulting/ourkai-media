@@ -22,3 +22,5 @@ Question card (Ryan, Nov 22): "Whose day never looks like yours?" / SEND THIS TO
 Preview: preview/R01_same-sky_v6_preview.mp4 (new card + text-only sound; not approved, not in Vista).
 
 | snd/R01_snd_text_v2.wav | 4f97cd29-ff40-48c8-af6a-bae4e3be3814 | Ryan: text v1 had no audible birds or breeze (measured: steady hiss, over half its energy at 3-8 kHz) and should be softer. v2 asks for breeze swells and distinct birdsong. Result: birds and breeze present, but -22.6 LUFS (no softer: text mode lands near -22 LUFS whatever the prompt says), peak -0.7 dBTP, a bird burst at 25.5 s under the end card. Preview: preview/R01_same-sky_v7_preview.mp4 |
+
+| snd/R01_music_v1.mp3 | 09b02eca-578a-429f-a589-92bfc7c8525a | Ryan, Nov 22: try soft house, instrumental, smooth transitions, a little more fun (the breeze sounded static and like water). Soft deep house, 118 BPM, Rhodes, gentle bass. Asked for 27 s; came back 37 s at -15 LUFS, quiet intro to 8 s, full groove from 8 s, its own fade only at 32-34 s. In the preview it is cut off at 26.9 s under the end card. Preview: preview/R01_same-sky_v8_music-preview.mp4 |
