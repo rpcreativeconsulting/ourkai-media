@@ -35,7 +35,7 @@ CARDS={
  'c2':card(True,bottom=470,head='They aren\'t at war.',hm=True,body='Yin and Yang',accent='make each other.'),
  'c3':card(True,top=330,head='Each is rooted<br>in the other.',hm=True,body='The classics say each one',accent='gives rise to the other.'),
  'c4':card(True,top=330,head='The brightest noon<br>already leans<br>toward evening.',hm=True),
- 'c5':card(True,top=700,center=True,kicker='Your turn',head='Which do you have<br>too much of?',cta='Comment Yin or Yang'),
+ 'c5':card(True,top=640,center=True,kicker='Your turn',head='Is your chart<br>balanced?',body='What do you have too much of?',cta='Comment Yin or Yang'),
 }
 with sync_playwright() as p:
     b=p.chromium.launch(executable_path='/usr/bin/google-chrome',args=['--allow-file-access-from-files'])

@@ -13,3 +13,11 @@ v2 prompt: calm natural soundscape through an open window, late afternoon into n
 Negative: music, melody, tones, hum, mains hum, 60 Hz hum, buzz, electrical drone, fridge, air conditioner, fan, room tone, low rumble, sub-bass, voices, speech, footsteps, impacts, whooshes, risers, sudden or loud sounds, wind gusts, thunder.
 
 Preview: preview/R02_light-needs-shadow_v3_preview.mp4. Approved by Ryan Nov 22 and scheduled in Vista for Wed Nov 25, 9:00 AM PT (Instagram and Facebook), replacing the old-audio cut. Final copy: media/reels/G1/R02_light-needs-shadow.mp4.
+
+## Music version (Ryan, Nov 22: redo R02 in the R01 instrumental style, with some natural sound)
+
+| File | Runway task | Checks |
+|---|---|---|
+| snd/R02_music_v1.mp3 | 0a18923c-dc0b-4907-99f4-14e81debf2da | Dusk neo-soul / lo-fi house, 87 BPM (three bars per scene, changes at 8.3 and 16.5 s): muted electric guitar figure, Rhodes, round bass, soft kick, finger snaps, shaker, pad; soft evening birds in the intro and outro. 27.0 s, -17.6 LUFS, peak -0.7 dBTP, 2.6% of energy above 2 kHz, fades to silence by 26 s. Used as delivered. Preview: preview/R02_light-needs-shadow_v4_preview.mp4. Approved by Ryan Nov 22 and swapped into Vista for Wed Nov 25, 9:00 AM PT (Instagram + Facebook), cover media/reels/G1/covers/R02_light-needs-shadow_cover.jpg; final copy media/reels/G1/R02_light-needs-shadow.mp4 |
+
+Question card (Ryan, Nov 22): "Which do you have too much of?" replaced by "Is your chart balanced?" with "What do you have too much of?" beneath; the ask stays COMMENT YIN OR YANG. Only the card's words changed (same plaster ground, Runway 81f5d598, same timings), made with engine3/reels/swap_card.py, so the music fits unchanged. New picture: picture/R02_picture_silent_v5.mp4. Preview: preview/R02_light-needs-shadow_v5_preview.mp4 (not yet in Vista).
