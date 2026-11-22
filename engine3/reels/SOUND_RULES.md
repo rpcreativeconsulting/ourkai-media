@@ -24,13 +24,13 @@ REEL DEFAULTS (approved by Ryan, Nov 18, 2026, Reel 1 "Same sky")
 - Names: R##_slug.mp4 (R01_same-sky.mp4), saved in the repo at media/reels/G#/. The Reels sheet of the matrix holds stage, caption, hashtags, file and notes.
 
 THE FEEL IN ONE LINE (Ryan, Nov 22)
-Modern, cool and mellow. Warm instrumental grooves (chill R&B, lo-fi, neo-soul, soft house) that you can nod to, never loud or dramatic. Natural sound (birds, rain, water) is woven in when it suits the Reel, mixed low under the music.
+Modern, cool and mellow. Warm instrumental grooves (chill R&B, lo-fi, neo-soul, soft house) that you can nod to, never loud or dramatic. Or, when the Reel calls for it, natural sound alone. One or the other, never both in one Reel (Ryan, Nov 22).
 
 The sound follows the picture. The music changes where the picture changes, and its mood matches the scene. Nothing should be bigger, faster or darker than what is on screen. Reference: R01 "Same sky" (Nov 22), and the warm half-time feel of the reference Reel Ryan shared (warm, muffled, almost nothing above 2 kHz).
 
 SOUND RULES (Ryan, Nov 22; replaces the Nov 18 mixing rules and the clean_audio.py step)
 
-0. Music by default (Ryan, Nov 22). Every Reel gets its own modern, mellow instrumental, made in Runway for that Reel. Natural sound (birds chirping, rain, water, fire) is written into the music prompt when the Reel's idea calls for it, mixed low. A pure natural soundscape (no music) is used when Ryan asks for one, typically when each scene is its own place (R03, five elements).
+0. Music OR natural sound, never both (Ryan, Nov 22). Default: a modern, mellow instrumental made in Runway for that Reel, instruments only, with no nature sounds, ambience or effects in it. When the Reel calls for it (each scene its own place, like R03's five elements), natural sound alone, with no music.
 
 1. Clean from the start. No cleanup.
 - Processing a generated bed breaks it. No notch filters, no EQ, no high-pass, no denoise, no loudness normalisation, no compression, no fades, no trims, no cross-fades, no layering or mixing two beds together, no speed or pitch change. engine3/reels/clean_audio.py is retired.
@@ -73,9 +73,9 @@ promptText, in this order:
 1. Style and mood: "Modern, cool, mellow instrumental for <the Reel's moment>, <chill R&B / lo-fi / neo-soul / soft house> feel, <BPM> BPM, 4/4, laid-back half-time groove."
 2. Tone: "Warm and velvety tone, low-passed with no harsh or bright highs."
 3. Instruments: name 4 to 6 (Rhodes, muted electric guitar, nylon guitar, round bass, soft kick, brushed snare, finger snaps, shaker, airy pad, a few plucked notes). Vary them from Reel to Reel so no two Reels sound alike.
-4. Natural sound, when it fits: "<real birds chirping / soft rain / a stream> in the background of <which bars>, natural and gentle, mixed low under the music."
+4. Always: "Pure instrumental music only, with no nature sounds, no ambience and no sound effects." (Never mix nature sounds into music: one or the other.)
 5. The bar plan: "Exactly <N> seconds, changes on the bar line: bars 1 to 3 (0 to 8.3 seconds) <intro>. Bars 4 to 6 (8.3 to 16.5 seconds) <full groove>. Bars 7 and 8 (16.5 to 22 seconds) the drums drop away for the question card. 22 to <end> seconds, a short outro fading completely to silence before the end."
-6. Always: "No vocals, no vocal chops, no risers, no drops, no sweeps, no bright synths, no hard transitions."
+6. Always: "No vocals, no vocal chops, no rain, no fire crackle, no water, no birds, no vinyl crackle, no risers, no drops, no sweeps, no bright synths, no hard transitions."
 
 SOUNDSCAPE PROMPT TEMPLATE (only when Ryan asks for no music; Runway Mirelo SFX 2, text only)
 
