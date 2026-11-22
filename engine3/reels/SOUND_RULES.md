@@ -18,16 +18,19 @@ REEL DEFAULTS (approved by Ryan, Nov 18, 2026, Reel 1 "Same sky")
   - spares: smoked oak (Wood chapter, spring), black linen (winter Reel), water-worn basalt, architectural slate (retired after heavy use; rest it)
   Make new ones with the same recipe: extreme close-up of a real dark material, soft raking light from the upper left, very dark and even, calm, no text.
 - End card: built, not generated (AI end clips had rendering issues and are retired). Plain near-black #0e0d0b, the official vertical lockup with tagline (logos/ourkai-lockup-vertical-tagline-gold.svg) fading in, NO glow, and the ask beneath in gold mono caps: COMING SOON TO THE APP STORE (after launch: the post-launch ask). One shared end card for every Reel (the picture only; its sound is new for every Reel, see below). Script: engine3/reels/endcard.py.
-- Sound: natural soundscapes, NOT music, generated clean and never processed. See below.
+- Sound: a modern, mellow instrumental made for the Reel, sometimes with natural sound woven in (Ryan, Nov 22). Generated clean, never processed. See below.
 - Build: each Reel has its own folder in the ourkai-media repo, engine3/reels/R##/ with cards.py (type cards) and build.sh (ffmpeg cut); copy the last Reel's folder and change the lines, grounds and timings. Never copy its audio. Drawn diagrams (like the five-element cycle in R04) are rendered frame by frame in the brand fonts and laid over the clips; move a clip's subject out from under a diagram (feathered offset) rather than covering it.
+- Cover (Ryan, Nov 22): every Reel gets a cover image with its hook, readable inside the centre 1080 × 1350, saved in git at media/reels/G#/covers/R##_slug_cover.jpg and set as the post's cover in Vista (thumbnail_media_url). Never leave Vista to pick a frame: it picked a bare sky for R01.
 - Names: R##_slug.mp4 (R01_same-sky.mp4), saved in the repo at media/reels/G#/. The Reels sheet of the matrix holds stage, caption, hashtags, file and notes.
 
-THE FEEL IN ONE LINE
-Meditation, not movie trailer. Soft, flowing, natural. The sound should feel like breathing slowly in a quiet room with a window open.
+THE FEEL IN ONE LINE (Ryan, Nov 22)
+Modern, cool and mellow. Warm instrumental grooves (chill R&B, lo-fi, neo-soul, soft house) that you can nod to, never loud or dramatic. Natural sound (birds, rain, water) is woven in when it suits the Reel, mixed low under the music.
 
-The sound follows the picture. If the video is still water at dawn, the sound is still water at dawn. Nothing in the sound should be bigger, faster or darker than what is on screen.
+The sound follows the picture. The music changes where the picture changes, and its mood matches the scene. Nothing should be bigger, faster or darker than what is on screen. Reference: R01 "Same sky" (Nov 22), and the warm half-time feel of the reference Reel Ryan shared (warm, muffled, almost nothing above 2 kHz).
 
 SOUND RULES (Ryan, Nov 22; replaces the Nov 18 mixing rules and the clean_audio.py step)
+
+0. Music by default (Ryan, Nov 22). Every Reel gets its own modern, mellow instrumental, made in Runway for that Reel. Natural sound (birds chirping, rain, water, fire) is written into the music prompt when the Reel's idea calls for it, mixed low. A pure natural soundscape (no music) is the exception, used only when Ryan asks for one.
 
 1. Clean from the start. No cleanup.
 - Processing a generated bed breaks it. No notch filters, no EQ, no high-pass, no denoise, no loudness normalisation, no compression, no fades, no trims, no cross-fades, no layering or mixing two beds together, no speed or pitch change. engine3/reels/clean_audio.py is retired.
@@ -40,34 +43,44 @@ SOUND RULES (Ryan, Nov 22; replaces the Nov 18 mixing rules and the clean_audio.
 - Every bed is logged once in the matrix Assets sheet (task or generation id, Reel, scene, length). The log is checked before any build so nothing is used twice.
 - Runway video clips come back with their own generated audio: never use it (generateAudio false).
 
-3. Where sound is made (Ryan, Nov 22): Runway only. ElevenLabs is not used for Reels or social.
-- Default: Runway Mirelo SFX 2 (mirelo-sfx-2) from TEXT ONLY, no picture. One continuous track for the whole Reel at its exact length, format wav, about 2 credits per second (a 27 s Reel is about 54 credits). Tested Nov 22 on R01: right level and the cleanest result.
-- Why not score from the picture: when Mirelo scores the video, the picture overrides the prompt. Quiet-looking shots (paper, shadows, night, dark cards) come back near-silent, and a mains hum lives in that near-silence. Four picture-scored passes on R01 and R03 failed this way; one on R02 passed. Picture scoring is only for Reels whose every scene reads as full and outdoor.
-- Keep the bed full: one continuous natural source runs under every scene (wind through leaves, rain, a stream), with the scene's own detail on top. No near-silent passage until the final fade.
-- The finished track is committed to engine3/reels/R##/snd/ as delivered, with its prompt, task id and checks in engine3/reels/R##/sound.md. Git is the record of every Reel's sound, so reuse is easy to spot.
-- Fallback: Runway sound effects (sound-effects), one bed per scene at its exact length, placed end to end. These have carried a hum; a bed with hum is regenerated, never filtered.
+3. Where sound is made (Ryan, Nov 22): Runway only. ElevenLabs is not used directly for Reels or social; everything is generated in Runway and kept in git.
+- Music (default): Runway generate_music with the eleven-music-v2.5 model, durationSeconds = the Reel's length rounded up to a whole second, forceInstrumental true, mp3. About 10 credits for a 27 s Reel. The model can return a different length than asked (R01 house test: 37 s for 27): check the length and that the track has faded to silence by the last frame; if not, regenerate.
+- Tempo: pick the BPM so each scene is a whole number of bars and the music changes land on the picture changes. For the standard 8.27 s scenes, 87 BPM = three 4/4 bars per scene (changes at 8.3 and 16.5 s). Write the bar plan into the prompt.
+- Natural soundscape (only when asked): Runway Mirelo SFX 2 from TEXT ONLY (no picture), one continuous track, wav. Never score from the picture: quiet-looking shots come back near-silent with a mains hum (four failed passes on R01 and R03, Nov 22). Keep a full bed under every scene.
+- Every track is committed to engine3/reels/R##/snd/ as delivered, with its prompt, task id and checks in engine3/reels/R##/sound.md. Git is the record, so reuse is easy to spot.
 - Video clips' own generated audio is never used (generateAudio false).
 
 4. How sound is placed (the only thing done to it).
-- With Mirelo: the one track sits under the whole Reel from frame 1, as delivered. Scene times in the prompt come from the cut's build.sh (the middle of each cross-fade).
+- Music or soundscape: the one track sits under the whole Reel from frame 1, as delivered. Scene times in the prompt come from the cut's build.sh (the middle of each cross-fade).
 - With the fallback: one bed per scene, generated at the scene's exact length, with its own fade in and fade out written into the prompt. Beds are placed end to end on the timeline under their scenes. Where two scenes share a sound, generate one bed for both at their combined length.
 - The question card and end card share one bed of their own (near-silence, see the templates), generated at their combined length, fading to silence by the last frame.
 - Beds are put into the video as generated. If the file format has to change for Instagram (AAC in the mp4), that is one straight encode at 48 kHz, 256 kbps, with no filters. Nothing else touches the audio.
 
 5. Check, don't fix. Measurement only; the file is never changed by the check.
-- Loudness: integrated −26 to −18 LUFS, true peak no higher than −1 dBTP (ffmpeg ebur128, measure only).
+- Loudness: soundscapes −26 to −18 LUFS; music −18 to −13 LUFS (normal for music; R01's approved track −15.3). True peak no higher than −0.5 dBTP (ffmpeg ebur128, measure only).
 - Hum: in every 1 s window, the energy within 1.5 Hz of 50, 60, 100 and 120 Hz must stay at least 30 dB below the whole bed (measure only). A tone that only stands out against a near-silent bed is still a fail, because that is exactly when it is heard. Reference: R01 text v1 −42 dB (pass), R02 v2 −26 dB (approved before this check), R01 scored v2 −10 dB (fail).
 - Length: within 0.1 s of the scene it sits under.
 - Fails any check: regenerate with the prompt adjusted (quieter, softer, more distant, fewer sources), never filter.
 
-SOUND PROMPT TEMPLATE (Runway Mirelo SFX 2, text only)
+MUSIC PROMPT TEMPLATE (Runway generate_music, eleven-music-v2.5)
 
-Settings: model mirelo-sfx-2 · no video · duration = the Reel's exact length · format wav · one task (never re-run the same request).
+Settings: durationSeconds = Reel length rounded up · forceInstrumental true · one task.
 
 promptText, in this order:
-1. The whole piece: "A full, continuous natural soundscape <where>, <length> seconds, soft but full and clearly present the whole way through, never thin or silent, at an even level."
-2. The bed: "A steady gentle <wind through many leaves / soft rain / a stream> runs under the whole piece without a break, like a soft wash."
-3. One line per scene, with its times, adding that scene's detail on top of the bed: "<from> to <to> seconds: <detail>." Sources from SOUND FOR EACH SCENE below. Describe sounds only, not pictures.
+1. Style and mood: "Modern, cool, mellow instrumental for <the Reel's moment>, <chill R&B / lo-fi / neo-soul / soft house> feel, <BPM> BPM, 4/4, laid-back half-time groove."
+2. Tone: "Warm and velvety tone, low-passed with no harsh or bright highs."
+3. Instruments: name 4 to 6 (Rhodes, muted electric guitar, nylon guitar, round bass, soft kick, brushed snare, finger snaps, shaker, airy pad, a few plucked notes). Vary them from Reel to Reel so no two Reels sound alike.
+4. Natural sound, when it fits: "<real birds chirping / soft rain / a stream> in the background of <which bars>, natural and gentle, mixed low under the music."
+5. The bar plan: "Exactly <N> seconds, changes on the bar line: bars 1 to 3 (0 to 8.3 seconds) <intro>. Bars 4 to 6 (8.3 to 16.5 seconds) <full groove>. Bars 7 and 8 (16.5 to 22 seconds) the drums drop away for the question card. 22 to <end> seconds, a short outro fading completely to silence before the end."
+6. Always: "No vocals, no vocal chops, no risers, no drops, no sweeps, no bright synths, no hard transitions."
+
+SOUNDSCAPE PROMPT TEMPLATE (only when Ryan asks for no music; Runway Mirelo SFX 2, text only)
+
+Settings: model mirelo-sfx-2 · no video · duration = the Reel's exact length · format wav · one task.
+promptText: the whole piece and its place; one continuous natural bed under every scene; one line per scene with its times and its detail; the end fading to silence over the last two seconds; "Natural, airy, like a clean outdoor field recording with no equipment noise." Name sounds you can hear, not textures ("a wash" came back as hiss).
+negativePrompt: "hiss, white noise, static, music, melody, tones, hum, mains hum, 50 Hz hum, 60 Hz hum, buzz, electrical drone, room tone, near silence, low rumble, traffic, airplane, voices, footsteps, clicks, impacts, whooshes, sudden or loud sounds, wind gusts, thunder"
+
+SOUND FOR EACH SCENE below. Describe sounds only, not pictures.
 4. The question card and end card: keep the bed going with one quiet detail that fits the Reel's idea (crickets, a distant bird, drips), then "<from> to <end> seconds: <bed and detail> slowly fade out to complete silence over the last two seconds." Change the detail for each Reel; never reuse the wording.
 5. "Starts softly from silence over the first second. Natural, airy, like a clean outdoor field recording with no equipment noise."
 
@@ -92,7 +105,7 @@ SOUND FOR EACH SCENE (sources for line 1 of the template)
 - Night: quiet night air, crickets very faint.
 
 NEVER
-- No music beds, no trending audio, no songs.
+- No trending audio or songs we don't hold the rights to; every track is made for its Reel.
 - No epic or trailer sound: no booms, impacts, risers or whooshes.
 - No voices or words. No gongs, no clichéd "oriental" sound.
 - No sound that moves faster or louder than the picture.
@@ -101,9 +114,9 @@ NEVER
 - No bed used in more than one piece of content (rule 2).
 
 CHECK BEFORE A REEL GOES OUT
-1. Close your eyes. Does it feel calm, like a walk in nature?
+1. Close your eyes. Is it mellow, modern and easy to nod to, never loud or dramatic?
 2. Does each sound match what is on screen, scene by scene?
-3. Any music, beat, impact, voice or sudden sound? If yes, it does not go out.
+3. Any vocals, risers, drops, impacts or sudden sounds? If yes, it does not go out. Does the music change where the picture changes, and fade to silence under the end card?
 4. Was the sound generated new for this Reel, committed with its sound.md, logged once in Assets, and left unprocessed? Do the loudness, hum and length measurements pass? Listen on a phone at full volume, especially on the quiet question card and end card.
 5. Is the question ground new for this Reel and true to its idea?
 6. Does every picture show the line written over it?
@@ -126,7 +139,7 @@ ORDER OF WORK (cheapest first)
 8. Only then animate it: 5 seconds, 9:16, 720p for drafts, with generated audio off.
 9. Upscale only the clip that is approved as final.
 10. Use the cheaper model for tests.
-11. Sound last: once the cut and its timings are locked, generate the text-only track at the exact length, check it, and commit it.
+11. Sound last: once the cut and its timings are locked, generate the track at the Reel's length with its bar plan, check it, and commit it.
 
 WHEN SOMETHING GOES WRONG
 12. A result with text, letters, logos, people, faces or hands, or anything off-brand: say so and stop.
