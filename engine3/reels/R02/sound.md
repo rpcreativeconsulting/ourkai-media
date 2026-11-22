@@ -12,4 +12,4 @@ Picture: picture/R02_picture_silent.mp4 (stream copy of media/reels/G1/R02_light
 v2 prompt: calm natural soundscape through an open window, late afternoon into night, soft but clearly present. 0-9 s breeze, leaves, a few birds; 9-17 s curtain in the same breeze, evening birds at a middle distance; 17-27 s early night air, soft crickets, fading to silence over the last two seconds.
 Negative: music, melody, tones, hum, mains hum, 60 Hz hum, buzz, electrical drone, fridge, air conditioner, fan, room tone, low rumble, sub-bass, voices, speech, footsteps, impacts, whooshes, risers, sudden or loud sounds, wind gusts, thunder.
 
-Preview: preview/R02_light-needs-shadow_v3_preview.mp4 (not approved, not in Vista).
+Preview: preview/R02_light-needs-shadow_v3_preview.mp4. Approved by Ryan Nov 22 and scheduled in Vista for Wed Nov 25, 9:00 AM PT (Instagram and Facebook), replacing the old-audio cut. Final copy: media/reels/G1/R02_light-needs-shadow.mp4.
