@@ -17,4 +17,6 @@ After v3: scoring from the picture overrides the level asked for. The paper-and-
 
 Text-only v1 prompt: full continuous meadow soundscape, steady wind through leaves under the whole piece; 0-9 s morning birds nearby; 9-17 s fuller leaf rustle, a bird now and then; 17-24 s evening, full cricket chorus; 24-26.9 s fade to silence; starts softly from silence. Same negative prompt as v3.
 
-Preview: preview/R01_same-sky_v6_preview.mp4 (not approved, not in Vista).
+Question card (Ryan, Nov 22): "Whose day never looks like yours?" / SEND THIS TO THEM replaced by "How is today meeting you?" / COMMENT ONE WORD. Only the card's words changed: same night-sky ground (Runway 2c5a0542), same timings, so the text-only sound fits unchanged. New picture: picture/R01_picture_silent_v6.mp4.
+
+Preview: preview/R01_same-sky_v6_preview.mp4 (new card + text-only sound; not approved, not in Vista).
