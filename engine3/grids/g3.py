@@ -16,8 +16,9 @@ Revisions
   Assets sheet as Available.
 - Nov 23: center 23 changed to a thumbprint in dark clay (an image that stands for "you"); post 22 rewritten from
   "Which realm do you ignore?" to "Three kinds of qi move your day." (people feel the three qi without knowing them).
-- Nov 23: post 25 rewritten from "Not your sun sign. Your own chart." to "One chart in 518,400." (Bǐng is The Sun in our own
-  system, and the feed never talks other systems down; 60 x 12 x 60 x 12 = 518,400).
+- Nov 23: post 25 rewritten from "Not your sun sign. Your own chart." to "Do you know your birth hour?" (Bǐng is The Sun in our own
+  system, and the feed never talks other systems down). The hour pillar: inner life, how you see the world, how you
+  invest, legacy, children (Ryan's definition; see the depth reference glossary).
 - Nov 23: post 21 slides 2-5 built (SLIDES: one per realm in the app's words and colours, then the three circles). 
 - Nov 23: post 26 slides 2-5 built (SLIDES26: what a Day Master is, the Yang five, the Yin five, which are you).
 """
@@ -43,8 +44,8 @@ TILES = [  # profile order, approved
     dict(post=19, slug='heaven-earth-you', template='horizon', bg='moongate', dark=False, kicker='The three realms', palace='9 · S · 19',
          head='Heaven, Earth, and you.',
          body=f'{ZH.format("天")} Cosmic, {ZH.format("地")} Earth, {ZH.format("人")} Self:', accent='the three realms.'),
-    dict(post=25, slug='one-in-518400', template='sky', bg='crystal', dark=True, kicker='BaZi', palace='2 · SW · 25',
-         head='One chart in 518,400.', body="That's how many ways the four pillars can fall.", accent='One of them is yours.'),
+    dict(post=25, slug='your-birth-hour', template='sky', bg='crystal', dark=True, kicker='BaZi', palace='2 · SW · 25',
+         head='Do you know<br>your birth hour?', body='Your fourth pillar holds your inner life,', accent='and what you leave behind.'),
     dict(post=20, slug='right-time-place-people', template='sky', bg='teatable', dark=False, kicker='The three realms', palace='3 · E · 20',
          head='Right time. Right place. Right people.', body='An old Chinese saying,', accent='and a map of a good decision.'),
     dict(post=23, slug='third-realm', template='character', bg='thumbprint', dark=True, kicker='人 · Self', palace='5 · Center · 23', char='人',
