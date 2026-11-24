@@ -16,7 +16,9 @@ Revisions
   Assets sheet as Available.
 - Nov 23: center 23 changed to a thumbprint in dark clay (an image that stands for "you"); post 22 rewritten from
   "Which realm do you ignore?" to "Three kinds of qi move your day." (people feel the three qi without knowing them).
-- Posts 21 and 26 are carousel covers: slides 2-5 still to build.
+- Nov 23: post 25 rewritten from "Not your sun sign. Your own chart." to "One chart in 518,400." (Bǐng is The Sun in our own
+  system, and the feed never talks other systems down; 60 x 12 x 60 x 12 = 518,400).
+- Nov 23: post 21 slides 2-5 built (SLIDES: one per realm in the app's words and colours, then the three circles). Post 26 slides 2-5 still to build.
 """
 import os as _os
 _HERE = _os.path.dirname(_os.path.abspath(__file__))
@@ -40,8 +42,8 @@ TILES = [  # profile order, approved
     dict(post=19, slug='heaven-earth-you', template='horizon', bg='moongate', dark=False, kicker='The three realms', palace='9 · S · 19',
          head='Heaven, Earth, and you.',
          body=f'{ZH.format("天")} Cosmic, {ZH.format("地")} Earth, {ZH.format("人")} Self:', accent='the three realms.'),
-    dict(post=25, slug='not-your-sun-sign', template='sky', bg='crystal', dark=True, kicker='BaZi', palace='2 · SW · 25',
-         head='Not your sun sign. Your own chart.', body='About one in twelve share your sun sign.', accent='Your chart goes much further.'),
+    dict(post=25, slug='one-in-518400', template='sky', bg='crystal', dark=True, kicker='BaZi', palace='2 · SW · 25',
+         head='One chart in 518,400.', body="That's how many ways the four pillars can fall.", accent='One of them is yours.'),
     dict(post=20, slug='right-time-place-people', template='sky', bg='teatable', dark=False, kicker='The three realms', palace='3 · E · 20',
          head='Right time. Right place. Right people.', body='An old Chinese saying,', accent='and a map of a good decision.'),
     dict(post=23, slug='third-realm', template='character', bg='thumbprint', dark=True, kicker='人 · Self', palace='5 · Center · 23', char='人',
@@ -57,6 +59,21 @@ TILES = [  # profile order, approved
 ]
 
 OPTIONS = {}  # approved Nov 20; earlier options in the matrix Assets sheet
+
+REALM = {'天': '#a47433', '地': '#6b8e6e', '人': '#b14a36'}  # as in the app: gold, jade, vermillion
+
+SLIDES = [  # post 21, slides 2-5, on the shared paper; wording follows the app's Cosmic Trinity screen
+    dict(post=21, n=2, char='天', label='Cosmic · timing beyond our control', head='Cosmic: timing beyond your control.',
+         body="The turning earth, the sun and moon, the weather, the seasons. A larger flow you can't steer. Tong Shu reads it. In the app: Planner."),
+    dict(post=21, n=3, char='地', label='Earth · where we are', head='Earth: where you are.',
+         body='Where you live, work, rest and travel. Your space shapes the opportunities that find you. Feng Shui reads it. In the app: Feng Shui and Directions.'),
+    dict(post=21, n=4, char='人', label='Self · who we are', head='Self: who you are.',
+         body='Your actions and reactions. Your patterns, emotions, skills and choices. BaZi reads the nature you were born with. In the app: You.'),
+    dict(post=21, n=5, char='circles', label='Sāncái · three realms of qi', head='Where all three meet.',
+         body="That's where you live, every moment: cosmic timing, physical space and your own nature. Most of us only ever look at one.",
+         cta='See how it reads · link in bio'),
+]
+
 
 
 def _art_three_realms(c):
@@ -108,4 +125,35 @@ def build(bgdir=None, variant='A'):
         elif k == 'question':
             h = TP.question(src, t['dark'], t['kicker'], t['palace'], t['head'], t.get('sub'), t.get('cta'))
         out.append((t['post'], h))
+    return out
+
+
+def build_slides(bgdir=None):
+    """Return [(name, html)] for the carousel slides (same layout as Grid 1 post 3)."""
+    import sys
+    sys.path.insert(0, _os.path.normpath(_os.path.join(_HERE, '..')))
+    import ourkai_type as T
+    T.LIGHT['label'] = T.LIGHT['soft']
+    c = T.LIGHT
+    bgdir = bgdir or _os.path.join(WORK, 'bg')
+    slug = {t['post']: t['slug'] for t in TILES}
+    out = []
+    for s in SLIDES:
+        cta = f'<div class="ok-label" style="color:{c["label"]};margin-top:16px">{s["cta"]}</div>' if s.get('cta') else ''
+        if s['char'] == 'circles':
+            circ = ''.join(
+                f'<div style="position:absolute;left:{x}px;top:{y}px;width:104px;height:104px;border-radius:50%;border:1.2px dashed {REALM[z]}"></div>'
+                f'<div class="ok-zh" style="position:absolute;left:{x + lx}px;top:{y + ly}px;width:40px;text-align:center;font-size:26px;color:{REALM[z]}">{z}</div>'
+                for z, x, y, lx, ly in [('天', 128, 70, 32, 16), ('地', 95, 126, 10, 50), ('人', 161, 126, 54, 50)])
+            art = circ + f'<div class="ok-label" style="position:absolute;left:0;right:0;top:248px;text-align:center;color:{c["label"]}">{s["label"]}</div>'
+        else:
+            art = (f'<div class="ok-zh" style="position:absolute;left:0;right:0;top:60px;text-align:center;font-size:150px;color:{REALM[s["char"]]}">{s["char"]}</div>'
+                   f'<div class="ok-label" style="position:absolute;left:0;right:0;top:238px;text-align:center;color:{c["label"]}">{s["label"]}</div>')
+        h = (f'<div class="ok-tile" style="background:{c["ground"]}"><img class="bg" src="file://{bgdir}/paper.png" alt="">'
+             f'<div class="ok-top"><span class="ok-label" style="color:{c["label"]}">The three realms</span>'
+             f'<span class="ok-label" style="color:{c["soft"]}">{s["n"]} / 5</span></div>'
+             f'<div class="ok-rule" style="background:{c["rule"]}"></div>{art}'
+             f'<div class="ok-foot"><div class="ok-head" style="color:{c["head"]}">{s["head"]}</div>'
+             f'<div class="ok-body" style="color:{c["body"]}">{s["body"]}</div>{cta}</div></div>')
+        out.append((f'G3-{s["post"]}_{slug[s["post"]]}_slide-{s["n"]}', h))
     return out
