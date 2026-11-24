@@ -18,7 +18,8 @@ Revisions
   "Which realm do you ignore?" to "Three kinds of qi move your day." (people feel the three qi without knowing them).
 - Nov 23: post 25 rewritten from "Not your sun sign. Your own chart." to "Do you know your birth hour?" (Bǐng is The Sun in our own
   system, and the feed never talks other systems down). The hour pillar: inner life, how you see the world, how you
-  invest, legacy, children (Ryan's definition; see the depth reference glossary).
+  invest, legacy, children (Ryan's definition; see the depth reference glossary). Image changed from the frost crystal
+  (retired) to a dandelion at night: what you leave behind.
 - Nov 23: post 21 slides 2-5 built (SLIDES: one per realm in the app's words and colours, then the three circles). 
 - Nov 23: post 26 slides 2-5 built (SLIDES26: what a Day Master is, the Yang five, the Yin five, which are you).
 """
@@ -29,7 +30,7 @@ WORK = _os.environ.get('OURKAI_WORK', '/home/claude/work')
 BACKGROUNDS = {
     'match':          '6595c52e-6cfc-465a-9c59-4c8b92e4452e',  # 24 · a match the instant it catches
     'moongate':       'aedc6398-e3b1-4cce-ac60-a4a40731a2aa',  # 19 · moon gate in pale plaster framing a dawn sky
-    'crystal':        '8c121ae7-0889-4eb7-9c9d-3963803fd983',  # 25 · one frost crystal on dark glass, lit gold
+    'dandelion':      'da73d831-a859-4ea1-b42d-fae9cfcb419c',  # 25 · dandelion at night, seeds lifting away, gold side light (shifted down 200 px, top row extended, so no seed touches the text)
     'teatable':       '08058c9b-6569-4d24-8cc9-8900b5f8c4f7',  # 20 · low tea table, three cushions, morning sun
     'thumbprint':     'b2e6a72c-83b1-4f59-9ed0-3d55963bf55d',  # 23 · one thumbprint pressed into dark clay, warm side light
     'paper':          '2ce98312-8a6f-42ea-9cdc-dc6ae3824c10',  # shared paper (21, 22)
@@ -44,7 +45,7 @@ TILES = [  # profile order, approved
     dict(post=19, slug='heaven-earth-you', template='horizon', bg='moongate', dark=False, kicker='The three realms', palace='9 · S · 19',
          head='Heaven, Earth, and you.',
          body=f'{ZH.format("天")} Cosmic, {ZH.format("地")} Earth, {ZH.format("人")} Self:', accent='the three realms.'),
-    dict(post=25, slug='your-birth-hour', template='sky', bg='crystal', dark=True, kicker='BaZi', palace='2 · SW · 25',
+    dict(post=25, slug='your-birth-hour', template='sky', bg='dandelion', dark=True, kicker='BaZi', palace='2 · SW · 25',
          head='Do you know<br>your birth hour?', body='Your hour of birth is your hour pillar. It holds your inner life,', accent='and what you leave behind.'),
     dict(post=20, slug='right-time-place-people', template='sky', bg='teatable', dark=False, kicker='The three realms', palace='3 · E · 20',
          head='Right time. Right place. Right people.', body='An old Chinese saying,', accent='and a map of a good decision.'),
