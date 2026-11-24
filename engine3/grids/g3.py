@@ -14,6 +14,8 @@ Revisions
   25 frost crystal, 20 tea table. Center 23 moved off the shared slate (the bottom of the grid read
   as one grey) to stepping stones over black water. Unpicked options are logged in the matrix
   Assets sheet as Available.
+- Nov 23: center 23 changed to a thumbprint in dark clay (an image that stands for "you"); post 22 rewritten from
+  "Which realm do you ignore?" to "Three kinds of qi move your day." (people feel the three qi without knowing them).
 - Posts 21 and 26 are carousel covers: slides 2-5 still to build.
 """
 import os as _os
@@ -25,7 +27,7 @@ BACKGROUNDS = {
     'moongate':       'aedc6398-e3b1-4cce-ac60-a4a40731a2aa',  # 19 · moon gate in pale plaster framing a dawn sky
     'crystal':        '8c121ae7-0889-4eb7-9c9d-3963803fd983',  # 25 · one frost crystal on dark glass, lit gold
     'teatable':       '08058c9b-6569-4d24-8cc9-8900b5f8c4f7',  # 20 · low tea table, three cushions, morning sun
-    'steppingstones': '1dda2bda-b785-43df-834c-453f22117a2e',  # 23 · stepping stones over still black water, from above
+    'thumbprint':     'b2e6a72c-83b1-4f59-9ed0-3d55963bf55d',  # 23 · one thumbprint pressed into dark clay, warm side light
     'paper':          '2ce98312-8a6f-42ea-9cdc-dc6ae3824c10',  # shared paper (21, 22)
     'slate':          '5ddfefae-351d-40c8-8d28-99d76b29f0f0',  # shared slate (26, 27)
 }
@@ -42,14 +44,14 @@ TILES = [  # profile order, approved
          head='Not your sun sign. Your own chart.', body='About one in twelve share your sun sign.', accent='Your chart goes much further.'),
     dict(post=20, slug='right-time-place-people', template='sky', bg='teatable', dark=False, kicker='The three realms', palace='3 · E · 20',
          head='Right time. Right place. Right people.', body='An old Chinese saying,', accent='and a map of a good decision.'),
-    dict(post=23, slug='third-realm', template='character', bg='steppingstones', dark=True, kicker='人 · Self', palace='5 · Center · 23', char='人',
+    dict(post=23, slug='third-realm', template='character', bg='thumbprint', dark=True, kicker='人 · Self', palace='5 · Center · 23', char='人',
          head='You are the third realm.', body='Heaven and Earth set the stage.', accent='You walk on it.'),
     dict(post=21, slug='three-realms-systems', template='plate', bg='paper', dark=False, kicker='The three realms', palace='7 · W · 21',
          art='three_realms', head='Three realms. Three systems.', cta='Swipe →'),
     dict(post=26, slug='meet-your-day-master', template='plate', bg='slate', dark=True, kicker='BaZi', palace='8 · NE · 26',
          art='ten_stems', head='Meet your Day Master.', body='The stem of your birth day is', accent='your center.', cta='Swipe for all ten →'),
-    dict(post=22, slug='which-realm', template='question', bg='paper', dark=False, kicker='Find yourself', palace='1 · N · 22',
-         head='Which realm do you ignore?', sub='Most of us read only one. All three are moving.', cta='Comment Cosmic, Earth or Self'),
+    dict(post=22, slug='three-qi', template='question', bg='paper', dark=False, kicker='Find yourself', palace='1 · N · 22',
+         head='Three kinds of qi move your day.', sub='Time, place and you. Most of us feel them without knowing their names.', cta='Comment the one you feel most'),
     dict(post=27, slug='which-day-master', template='question', bg='slate', dark=True, kicker='Find yourself', palace='6 · NW · 27',
          head='Ten Day Masters. Which are you?', sub='The Tree, the Rain, and eight more. Coming soon to the app.', cta='See how it reads · link in bio'),
 ]
