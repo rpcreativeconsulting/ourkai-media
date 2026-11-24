@@ -18,7 +18,8 @@ Revisions
   "Which realm do you ignore?" to "Three kinds of qi move your day." (people feel the three qi without knowing them).
 - Nov 23: post 25 rewritten from "Not your sun sign. Your own chart." to "One chart in 518,400." (Bǐng is The Sun in our own
   system, and the feed never talks other systems down; 60 x 12 x 60 x 12 = 518,400).
-- Nov 23: post 21 slides 2-5 built (SLIDES: one per realm in the app's words and colours, then the three circles). Post 26 slides 2-5 still to build.
+- Nov 23: post 21 slides 2-5 built (SLIDES: one per realm in the app's words and colours, then the three circles). 
+- Nov 23: post 26 slides 2-5 built (SLIDES26: what a Day Master is, the Yang five, the Yin five, which are you).
 """
 import os as _os
 _HERE = _os.path.dirname(_os.path.abspath(__file__))
@@ -74,6 +75,21 @@ SLIDES = [  # post 21, slides 2-5, on the shared paper; wording follows the app'
          cta='See how it reads · link in bio'),
 ]
 
+
+EL = {'Wood': '#8fb19c', 'Fire': '#c0392b', 'Earth': '#d4af6e', 'Metal': '#c7c2b6', 'Water': '#5b8bd0'}  # element colours on dark
+STEMS = [('甲', 'Jiǎ', 'The Tree', 'Yang', 'Wood'), ('丙', 'Bǐng', 'The Sun', 'Yang', 'Fire'), ('戊', 'Wù', 'The Mountain', 'Yang', 'Earth'),
+         ('庚', 'Gēng', 'The Steel', 'Yang', 'Metal'), ('壬', 'Rén', 'The Ocean', 'Yang', 'Water'),
+         ('乙', 'Yǐ', 'The Vine', 'Yin', 'Wood'), ('丁', 'Dīng', 'The Candle', 'Yin', 'Fire'), ('己', 'Jǐ', 'The Garden', 'Yin', 'Earth'),
+         ('辛', 'Xīn', 'The Jewel', 'Yin', 'Metal'), ('癸', 'Guǐ', 'The Rain', 'Yin', 'Water')]
+
+SLIDES26 = [  # post 26, slides 2-5, on the shared slate
+    dict(n=2, art='day', head='The stem of your birth day.',
+         body='Your chart holds eight characters. The stem of your birth day sits at the center, and the rest is read from it.'),
+    dict(n=3, art='Yang', head='Five are Yang.', body='One for each element.'),
+    dict(n=4, art='Yin', head='Five are Yin.', body='One for each element.'),
+    dict(n=5, art='all', head='Which one are you?', body='Your Day Master is one layer. Your full chart is the rest.',
+         cta='See how it reads · link in bio'),
+]
 
 
 def _art_three_realms(c):
@@ -134,6 +150,7 @@ def build_slides(bgdir=None):
     sys.path.insert(0, _os.path.normpath(_os.path.join(_HERE, '..')))
     import ourkai_type as T
     T.LIGHT['label'] = T.LIGHT['soft']
+    T.DARK['label'] = T.DARK['soft']
     c = T.LIGHT
     bgdir = bgdir or _os.path.join(WORK, 'bg')
     slug = {t['post']: t['slug'] for t in TILES}
@@ -156,4 +173,32 @@ def build_slides(bgdir=None):
              f'<div class="ok-foot"><div class="ok-head" style="color:{c["head"]}">{s["head"]}</div>'
              f'<div class="ok-body" style="color:{c["body"]}">{s["body"]}</div>{cta}</div></div>')
         out.append((f'G3-{s["post"]}_{slug[s["post"]]}_slide-{s["n"]}', h))
+    d = T.DARK
+    for s in SLIDES26:
+        if s['art'] == 'day':
+            art = (f'<div class="ok-zh" style="position:absolute;left:0;right:0;top:60px;text-align:center;font-size:150px;color:{d["accent"]}">日</div>'
+                   f'<div class="ok-label" style="position:absolute;left:0;right:0;top:238px;text-align:center;color:{d["label"]}">Rì Zhǔ · the Day Master</div>')
+        elif s['art'] in ('Yang', 'Yin'):
+            rows = ''.join(
+                f'<div style="display:flex;align-items:center;gap:16px;padding:7px 0;border-top:0.5px solid {d["rule"]}">'
+                f'<div class="ok-zh" style="font-size:30px;width:40px;text-align:center;color:{EL[e]}">{z}</div>'
+                f'<div><div class="ok-label" style="color:{d["head"]}">{name}</div>'
+                f'<div class="ok-label" style="font-size:8px;color:{d["soft"]};margin-top:3px">{py} · {pol} {e}</div></div></div>'
+                for z, py, name, pol, e in STEMS if pol == s['art'])
+            art = f'<div style="position:absolute;left:29px;right:29px;top:84px">{rows}</div>'
+        else:
+            cells = ''.join(
+                f'<div style="display:flex;flex-direction:column;align-items:center;gap:5px">'
+                f'<div class="ok-zh" style="font-size:24px;color:{EL[e]}">{z}</div>'
+                f'<div class="ok-label" style="font-size:6.4px;letter-spacing:.12em;color:{d["soft"]}">{name[4:]}</div></div>'
+                for z, py, name, pol, e in STEMS)
+            art = f'<div style="position:absolute;left:29px;right:29px;top:96px;display:grid;grid-template-columns:repeat(5,1fr);row-gap:18px">{cells}</div>'
+        cta = f'<div class="ok-label" style="color:{d["label"]};margin-top:16px">{s["cta"]}</div>' if s.get('cta') else ''
+        h = (f'<div class="ok-tile" style="background:{d["ground"]}"><img class="bg" src="file://{bgdir}/slate.png" alt="">'
+             f'<div class="ok-top"><span class="ok-label" style="color:{d["label"]}">BaZi</span>'
+             f'<span class="ok-label" style="color:{d["soft"]}">{s["n"]} / 5</span></div>'
+             f'<div class="ok-rule" style="background:{d["rule"]}"></div>{art}'
+             f'<div class="ok-foot"><div class="ok-head" style="color:{d["head"]}">{s["head"]}</div>'
+             f'<div class="ok-body" style="color:{d["body"]}">{s["body"]}</div>{cta}</div></div>')
+        out.append((f'G3-26_{slug[26]}_slide-{s["n"]}', h))
     return out
