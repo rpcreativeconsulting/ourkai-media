@@ -87,3 +87,52 @@ def build(bgdir=_os.path.join(WORK, 'bg')):
             h = TP.question(src, t['dark'], t['kicker'], t['palace'], t['head'], t.get('sub'), t.get('cta'))
         out.append((t['post'], h))
     return out
+
+
+# Post 12 carousel, slides 2-5, on the shared paper (built Nov 25; same layout as the Grid 3 carousels).
+# Sources: five phases, seasons and directions (Huainanzi 3, Su Wen 4); Earth rules the last 18 days of each
+# season and the center (Su Wen 29); winter is for storing (Su Wen 2).
+EL12 = {'木': '#6b8e6e', '火': '#b14a36', '土': '#a4813a', '金': '#8a8578', '水': '#3f68a8'}  # art_five_seasons colours on light
+SLIDES12 = [
+    dict(n=2, chars='木火', label='Mù · Huǒ · spring and summer', head='Wood grows. Fire peaks.',
+         body='Wood rules spring and the east: things start, stretch and reach. Fire rules summer and the south: everything out in the open, at full strength.'),
+    dict(n=3, chars='金水', label='Jīn · Shuǐ · autumn and winter', head='Metal gathers. Water stores.',
+         body='Metal rules autumn and the west: the harvest is cut and kept. Water rules winter and the north: life goes quiet and deep, saving its strength.'),
+    dict(n=4, chars='土', label='Tǔ · the turns between', head='Earth holds the turns.',
+         body='Earth has no season of its own. In the classical map it rules the last eighteen days of each one, and the center: the pause where one season hands to the next.'),
+    dict(n=5, chars='row', label="Now · Water's season", head="Winter is Water's turn.",
+         body="The classics say store, not spend: rest earlier, finish what's open, plan the spring. Your element is one layer. Your full chart is the rest.",
+         cta='Save this'),
+]
+
+
+def build_slides(bgdir=_os.path.join(WORK, 'bg')):
+    """Return [(name, html)] for post 12's carousel slides 2-5."""
+    import sys
+    sys.path.insert(0, _os.path.normpath(_os.path.join(_HERE, '..')))
+    import ourkai_type as T
+    T.LIGHT['label'] = T.LIGHT['soft']
+    c = T.LIGHT
+    out = []
+    for s in SLIDES12:
+        if s['chars'] == 'row':
+            cells = ''.join(
+                f'<div class="ok-zh" style="font-size:44px;color:{col};opacity:{1 if z == "水" else .32}">{z}</div>'
+                for z, col in EL12.items())
+            art = f'<div style="position:absolute;left:40px;right:40px;top:110px;display:flex;justify-content:space-between">{cells}</div>'
+            label_top = 200
+        else:
+            size = 150 if len(s['chars']) == 1 else 118
+            chars = ''.join(f'<span style="color:{EL12[z]};margin:0 6px">{z}</span>' for z in s['chars'])
+            art = f'<div class="ok-zh" style="position:absolute;left:0;right:0;top:{60 if size == 150 else 76}px;text-align:center;font-size:{size}px">{chars}</div>'
+            label_top = 238
+        art += f'<div class="ok-label" style="position:absolute;left:0;right:0;top:{label_top}px;text-align:center;color:{c["label"]}">{s["label"]}</div>'
+        cta = f'<div class="ok-label" style="color:{c["label"]};margin-top:16px">{s["cta"]}</div>' if s.get('cta') else ''
+        h = (f'<div class="ok-tile" style="background:{c["ground"]}"><img class="bg" src="file://{bgdir}/paper.png" alt="">'
+             f'<div class="ok-top"><span class="ok-label" style="color:{c["label"]}">The five elements</span>'
+             f'<span class="ok-label" style="color:{c["soft"]}">{s["n"]} / 5</span></div>'
+             f'<div class="ok-rule" style="background:{c["rule"]}"></div>{art}'
+             f'<div class="ok-foot"><div class="ok-head" style="color:{c["head"]}">{s["head"]}</div>'
+             f'<div class="ok-body" style="color:{c["body"]}">{s["body"]}</div>{cta}</div></div>')
+        out.append((f'G2-12_every-season_slide-{s["n"]}', h))
+    return out
