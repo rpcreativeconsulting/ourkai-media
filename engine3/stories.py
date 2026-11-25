@@ -12,7 +12,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, _HERE)
 sys.path.insert(0, os.path.join(_HERE, 'reels'))
 from ourkai_type import DARK, LIGHT
-from cardlib import card, render
+from cardlib import card, render, SCRIM
 
 WORK = os.environ.get('OURKAI_WORK', '/home/claude/work')
 BG = f"file://{WORK}/bg"
@@ -80,6 +80,36 @@ STORIES = {
     '2026-11-28_slow-read': ground(False)
         + card(False, bottom=520, kicker='Slow read', head='Some days are for starting. Some are for staying in.'),
 }
+
+# Mon: week in the season (Seasons). Lake ice, Runway task 5ee742d1, ice in the top half, fading into dark water under the type.
+STORIES['2026-11-30_rat-month'] = (
+    '<div style="position:absolute;inset:0;background:#0b0d10"></div>'
+    f'<img src="{BG}/lake-ice.png" style="position:absolute;left:0;top:0;width:100%;height:1060px;object-fit:cover;object-position:50% 30%">'
+    '<div style="position:absolute;left:0;right:0;top:560px;height:500px;background:linear-gradient(to bottom,rgba(11,13,16,0),#0b0d10)"></div>'
+    '<div style="position:absolute;inset:0;background:rgba(14,13,11,.2)"></div>'
+    + card(True, bottom=470, kicker='This week in the season', head="Winter's deepest month starts Sunday.",
+           body='Major Snow on Dec 6 opens <span class="zh">子</span> <span class="py">Zǐ</span>, the Rat month, '
+                'when Water runs at its fullest. In the classical map Water holds wisdom. December fills up fast,',
+           accent='so keep some quiet for yourself.'))
+
+
+def _phases():
+    cells = [('木', 'Wood', 'Spring', '#7d9a6a'), ('火', 'Fire', 'Summer', '#c0674f'), ('土', 'Earth', 'The turns', '#b8955a'),
+             ('金', 'Metal', 'Autumn', '#c9c3b4'), ('水', 'Water', 'Winter', '#7b93ad')]
+    row = ''.join(
+        f'<div style="width:176px;text-align:center"><div class="zh" style="font-size:118px;color:{DARK["accent"]}">{zh}</div>'
+        f'<div class="k" style="font-size:24px;letter-spacing:.2em;margin-top:26px;color:{DARK["head"]}">{en}</div>'
+        f'<div class="k" style="font-size:22px;letter-spacing:.2em;margin-top:10px;color:{DARK["soft"]}">{season}</div></div>'
+        for zh, en, season, _ in cells)
+    return f'<div style="position:absolute;left:96px;right:96px;top:420px;display:flex;justify-content:space-between">{row}</div>'
+
+
+# Tue: depth (Seasons). The five phases follow the year; Earth rules the turns between seasons.
+STORIES['2026-12-01_depth'] = ground(True) + _phases() + card(
+    True, bottom=470, kicker='The classical root', head='One element for every season.',
+    body='Wood grows in spring, Fire peaks in summer, Metal gathers in autumn, Water rests in winter.',
+    accent='Earth holds the turns between.')
+
 
 # Multi-frame Stories: name -> list of frames (saved as 1.png, 2.png ...)
 MULTI = {
