@@ -12,7 +12,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, _HERE)
 sys.path.insert(0, os.path.join(_HERE, 'reels'))
 from ourkai_type import DARK, LIGHT
-from cardlib import card, render, SCRIM
+from cardlib import card, render, SCRIM, TOPSCRIM
 
 WORK = os.environ.get('OURKAI_WORK', '/home/claude/work')
 BG = f"file://{WORK}/bg"
@@ -71,26 +71,29 @@ STORIES = {
         + card(False, bottom=470, kicker='The classical root', head='One hill. Two sides.',
                body='Yīn first meant the shaded slope of a hill, Yáng the sunlit one.',
                accent='Not two things. One hill, two kinds of light.'),
-    # Thu: find yourself, poll sticker goes in the empty lower half; saved to Timing
+    # Thu: find yourself, poll sticker in the empty lower half (Yang: push / Yin: hold); saved to Timing.
+    # v3.3 rework Nov 25: matches R02, asks which way they lean instead of asking them to diagnose themselves.
     '2026-11-26_find-yourself': ground(True)
-        + card(True, top=300, kicker='Find yourself', head='Right now, which do you have too much of?',
-               body='Yang moves out: doing, speaking, spending. Yin draws in:',
-               accent='resting, listening, storing.'),
+        + card(True, top=300, kicker='Find yourself', head='Which way do you lean?',
+               body='Lean Yang, and you push. Lean Yin, and you hold.',
+               accent='Can you switch when it matters?'),
     # Sat: slow read
     '2026-11-28_slow-read': ground(False)
         + card(False, bottom=520, kicker='Slow read', head='Some days are for starting. Some are for staying in.'),
 }
 
-# Mon: week in the season (Seasons). Lake ice, Runway task 5ee742d1, ice in the top half, fading into dark water under the type.
+# Mon: week in the season (Seasons). v3.3 Nov 25: the lake-ice ground is retired (water/ice look already on the feed).
+_RAT = dict(kicker='This week in the season', head="Winter's deepest month starts Sunday.",
+            body='Major Snow on Dec 6 opens <span class="zh">子</span> <span class="py">Zǐ</span>, the Rat month, '
+                 'when Water runs at its fullest. In the classical map Water holds wisdom. December fills up fast,',
+            accent='so keep some quiet for yourself.')
+# Chosen by Ryan Nov 25 (option A): morning tea in a shaft of sun (Runway 02dd207b), cup in the top half fading into the dark table under the type.
 STORIES['2026-11-30_rat-month'] = (
-    '<div style="position:absolute;inset:0;background:#0b0d10"></div>'
-    f'<img src="{BG}/lake-ice.png" style="position:absolute;left:0;top:0;width:100%;height:1060px;object-fit:cover;object-position:50% 30%">'
-    '<div style="position:absolute;left:0;right:0;top:560px;height:500px;background:linear-gradient(to bottom,rgba(11,13,16,0),#0b0d10)"></div>'
-    '<div style="position:absolute;inset:0;background:rgba(14,13,11,.2)"></div>'
-    + card(True, bottom=470, kicker='This week in the season', head="Winter's deepest month starts Sunday.",
-           body='Major Snow on Dec 6 opens <span class="zh">子</span> <span class="py">Zǐ</span>, the Rat month, '
-                'when Water runs at its fullest. In the classical map Water holds wisdom. December fills up fast,',
-           accent='so keep some quiet for yourself.'))
+    '<div style="position:absolute;inset:0;background:#0d0b09"></div>'
+    f'<img src="{BG}/tea.png" style="position:absolute;left:0;top:0;width:100%;height:1080px;object-fit:cover;object-position:50% 40%">'
+    '<div style="position:absolute;left:0;right:0;top:640px;height:440px;background:linear-gradient(to bottom,rgba(13,11,9,0),#0d0b09)"></div>'
+    + card(True, bottom=470, **_RAT))
+# Option B (lit window, Runway d79498ce, text at the top) was shown and not picked.
 
 
 def _phases():
