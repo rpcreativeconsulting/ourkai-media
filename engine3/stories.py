@@ -81,9 +81,23 @@ STORIES = {
         + card(False, bottom=520, kicker='Slow read', head='Some days are for starting. Some are for staying in.'),
 }
 
+# Multi-frame Stories: name -> list of frames (saved as 1.png, 2.png ...)
+MULTI = {
+    # Sat: posted right after the Slow read; both saved to Seasons
+    '2026-11-28_raw-line': [
+        ground(False) + card(False, bottom=520, kicker='Winter', head="That's not rest.<br>That's scrolling."),
+        ground(False) + card(False, bottom=520, kicker='Winter', head='Winter is for storing.',
+                             body='Not spending. Even your attention.',
+                             accent='Put the phone down one hour earlier tonight.'),
+    ],
+}
+
 
 def story(name):
-    render({'1': STORIES[name]}, f'{WORK}/out/stories/{name}')
+    if name in MULTI:
+        render({str(i + 1): f for i, f in enumerate(MULTI[name])}, f'{WORK}/out/stories/{name}')
+    else:
+        render({'1': STORIES[name]}, f'{WORK}/out/stories/{name}')
 
 
 if __name__ == '__main__':
