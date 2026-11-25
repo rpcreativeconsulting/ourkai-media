@@ -46,3 +46,7 @@ Remakes:
 | snd/R03_scene_F_question-end_v3.mp3 | e08b6bac-62e2-418e-8feb-5d54c11a8f4a | Runway sound-effects. -40.5 (raised 13.5 dB), no hum, fades to silence. Used |
 
 Assembled: snd/R03_snd_assembled_v1.wav from wood v1, fire v2, earth v1, metal v3, water v1, question/end v3. Levels: wood -2.4 dB, fire 0, earth -1.7, metal -0.2, water -2.4, question/end +13.5 (scenes at about -24 dBFS rms; fire set by its crackle peaks so it sits lower). Whole: -25.3 LUFS, true peak -2.3 dBTP. Preview: preview/R03_phases_v5_natural-preview.mp4. Approved by Ryan Nov 22 ("perfect"); final copy media/reels/G2/R03_phases.mp4, cover media/reels/G2/covers/R03_phases_cover.jpg, swapped into the Sun Nov 29 Vista posts.
+
+## v8 (Nov 25): rebuild with new copy
+
+Picture rebuilt with cards_v2.py and build_v8.sh: new hook (Chinese medicine), new element body lines, question card "Which one sounds like you?" on water-worn basalt (Runway f705b073), Wood clip replaced by a locked-off redwood clip (Runway 81cfd71a, normal speed; the old tilt 23ef3643 was choppy and is rejected), end card with the lockup only (Ryan: no "Coming soon" line; endcard.py with the ask left empty). Sound: the approved Nov 22 natural soundscape, taken from the previous master, trimmed to 30.0 s with a 0.6 s end fade (edge fade only).
