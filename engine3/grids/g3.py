@@ -16,6 +16,7 @@ Revisions
   Assets sheet as Available.
 - Nov 23: center 23 changed to a thumbprint in dark clay (an image that stands for "you"); post 22 rewritten from
   "Which realm do you ignore?" to "Three kinds of qi move your day." (people feel the three qi without knowing them).
+- Nov 25: Day Master names set by Ryan Nov 24 applied to post 27 and post 26 cover and slides (The Great Tree, The Soil, The Axe); post 27 cta "Save this" (mid tier).
 - Nov 25: post 25 accent changed from "and what you leave behind." to "your later years and your children." (classical hour-pillar map; the money and investing lines had no source).
 - Nov 23: post 25 rewritten from "Not your sun sign. Your own chart." to "Do you know your birth hour?" (Bǐng is The Sun in our own
   system, and the feed never talks other systems down). The hour pillar: inner life, how you see the world, how you
@@ -59,7 +60,7 @@ TILES = [  # profile order, approved
     dict(post=22, slug='three-qi', template='question', bg='paper', dark=False, kicker='Find yourself', palace='1 · N · 22',
          head='Three kinds of qi move your day.', sub='Time, place and you. Most of us feel them without knowing their names.', cta='Comment the one you feel most'),
     dict(post=27, slug='which-day-master', template='question', bg='slate', dark=True, kicker='Find yourself', palace='6 · NW · 27',
-         head='Ten Day Masters. Which are you?', sub='The Tree, the Rain, and eight more. Coming soon to the app.', cta='See how it reads · link in bio'),
+         head='Ten Day Masters. Which are you?', sub='The Great Tree, the Rain, and eight more. Coming soon to the app.', cta='Save this'),
 ]
 
 OPTIONS = {}  # approved Nov 20; earlier options in the matrix Assets sheet
@@ -80,9 +81,9 @@ SLIDES = [  # post 21, slides 2-5, on the shared paper; wording follows the app'
 
 
 EL = {'Wood': '#8fb19c', 'Fire': '#c0392b', 'Earth': '#d4af6e', 'Metal': '#c7c2b6', 'Water': '#5b8bd0'}  # element colours on dark
-STEMS = [('甲', 'Jiǎ', 'The Tree', 'Yang', 'Wood'), ('丙', 'Bǐng', 'The Sun', 'Yang', 'Fire'), ('戊', 'Wù', 'The Mountain', 'Yang', 'Earth'),
-         ('庚', 'Gēng', 'The Steel', 'Yang', 'Metal'), ('壬', 'Rén', 'The Ocean', 'Yang', 'Water'),
-         ('乙', 'Yǐ', 'The Vine', 'Yin', 'Wood'), ('丁', 'Dīng', 'The Candle', 'Yin', 'Fire'), ('己', 'Jǐ', 'The Garden', 'Yin', 'Earth'),
+STEMS = [('甲', 'Jiǎ', 'The Great Tree', 'Yang', 'Wood'), ('丙', 'Bǐng', 'The Sun', 'Yang', 'Fire'), ('戊', 'Wù', 'The Mountain', 'Yang', 'Earth'),
+         ('庚', 'Gēng', 'The Axe', 'Yang', 'Metal'), ('壬', 'Rén', 'The Ocean', 'Yang', 'Water'),
+         ('乙', 'Yǐ', 'The Vine', 'Yin', 'Wood'), ('丁', 'Dīng', 'The Candle', 'Yin', 'Fire'), ('己', 'Jǐ', 'The Soil', 'Yin', 'Earth'),
          ('辛', 'Xīn', 'The Jewel', 'Yin', 'Metal'), ('癸', 'Guǐ', 'The Rain', 'Yin', 'Water')]
 
 SLIDES26 = [  # post 26, slides 2-5, on the shared slate
@@ -106,8 +107,8 @@ def _art_three_realms(c):
 
 
 def _art_ten_stems(c):
-    stems = [('甲', 'Tree'), ('乙', 'Vine'), ('丙', 'Sun'), ('丁', 'Candle'), ('戊', 'Mountain'),
-             ('己', 'Garden'), ('庚', 'Steel'), ('辛', 'Jewel'), ('壬', 'Ocean'), ('癸', 'Rain')]
+    stems = [('甲', 'Great Tree'), ('乙', 'Vine'), ('丙', 'Sun'), ('丁', 'Candle'), ('戊', 'Mountain'),
+             ('己', 'Soil'), ('庚', 'Axe'), ('辛', 'Jewel'), ('壬', 'Ocean'), ('癸', 'Rain')]
     cells = ''.join(
         f'<div style="display:flex;flex-direction:column;align-items:center;gap:5px">'
         f'<div class="ok-zh" style="font-size:24px;color:{c["accent"]}">{z}</div>'
