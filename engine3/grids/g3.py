@@ -16,6 +16,7 @@ Revisions
   Assets sheet as Available.
 - Nov 23: center 23 changed to a thumbprint in dark clay (an image that stands for "you"); post 22 rewritten from
   "Which realm do you ignore?" to "Three kinds of qi move your day." (people feel the three qi without knowing them).
+- Nov 25: post 25 accent changed from "and what you leave behind." to "your later years and your children." (classical hour-pillar map; the money and investing lines had no source).
 - Nov 23: post 25 rewritten from "Not your sun sign. Your own chart." to "Do you know your birth hour?" (Bǐng is The Sun in our own
   system, and the feed never talks other systems down). The hour pillar: inner life, how you see the world, how you
   invest, legacy, children (Ryan's definition; see the depth reference glossary). Image changed from the frost crystal
@@ -46,7 +47,7 @@ TILES = [  # profile order, approved
          head='Heaven, Earth, and you.',
          body=f'{ZH.format("天")} Cosmic, {ZH.format("地")} Earth, {ZH.format("人")} Self:', accent='the three realms.'),
     dict(post=25, slug='your-birth-hour', template='sky', bg='dandelion', dark=True, kicker='BaZi', palace='2 · SW · 25',
-         head='Do you know<br>your birth hour?', body='Your hour of birth is your hour pillar. It holds your inner life,', accent='and what you leave behind.'),
+         head='Do you know<br>your birth hour?', body='Your hour of birth is your hour pillar. It holds your inner life,', accent='your later years and your children.'),
     dict(post=20, slug='right-time-place-people', template='sky', bg='teatable', dark=False, kicker='The three realms', palace='3 · E · 20',
          head='Right time. Right place. Right people.', body='An old Chinese saying,', accent='and a map of a good decision.'),
     dict(post=23, slug='third-realm', template='character', bg='thumbprint', dark=True, kicker='人 · Self', palace='5 · Center · 23', char='人',

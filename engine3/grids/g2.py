@@ -21,6 +21,7 @@ Fill (posting) order: 13, 18, 12, 17, 14, 16, 11, 15, 10.
 Nov 18 revision (Ryan chose set B): 10 frost on glass, 11 rings on water, 13 deep indigo (dark).
 13 is a deliberate dark corner: it breaks the light/dark checkerboard at 6 NW by choice.
 redwood and hills are retired from this grid (kept in BACKGROUNDS for reference).
+- Nov 25: post 10 rewritten from "They're phases, not things." (a true layer stated as the whole, lesson 30) to "Five elements. More than five things." (Ryan approved the review fix).
 """
 import os as _os
 _HERE = _os.path.dirname(_os.path.abspath(__file__))
@@ -40,8 +41,8 @@ BACKGROUNDS = {
 
 # template: horizon | sky | plate | character | question  (engine3/templates.py)
 TILES = [
-    dict(post=10, slug='phases-not-things', template='horizon', bg='frost', dark=False, kicker='The five elements', palace='4 · SE · 10',
-         head="They're phases, not things.", body='Wood, Fire, Earth, Metal, Water:', accent='five ways energy moves.'),
+    dict(post=10, slug='more-than-five-things', template='horizon', bg='frost', dark=False, kicker='The five elements', palace='4 · SE · 10',
+         head='Five elements.<br>More than five things.', body='Each one holds a season, a direction,', accent='a colour and an emotion.'),
     dict(post=15, slug='everything-feeds', template='horizon', bg='ember', dark=True, kicker='The cycles', palace='9 · S · 15',
          head='Everything feeds something.', body='Wood feeds Fire. Fire makes Earth.', accent='The Production cycle.'),
     dict(post=11, slug='your-center', template='sky', bg='rings', dark=False, kicker='The five elements', palace='2 · SW · 11',
