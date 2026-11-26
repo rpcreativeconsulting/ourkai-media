@@ -8,7 +8,7 @@ CARDS = {
  'c2': card(True, bottom=470, head='That moment<br>has four pillars.', hm=True, body='Year, month, day and hour.'),
  'c3': card(True, bottom=470, head='Eight characters.<br><span class="zh">八字</span>, <span class="py">BāZì</span>.', hm=True, body='Each pillar has a stem and a branch.'),
  'c4': card(True, bottom=470, head='Your Day Master<br>is one layer.', hm=True, body='Your full chart', accent='is the rest.'),
- 'c5': card(True, top=330, center=True, kicker='Your turn', head='How well do you<br>know your own<br>moment?', hm=True, body="The app's You reads all four pillars,", accent='and shows why.', cta='Comment one word'),
+ 'c5': card(True, top=330, center=True, kicker='Your turn', head='How well do you<br>know your own<br>moment?', hm=True, body="The app's You reads all four pillars,", accent='and shows why.', cta='Send this to someone who needs it'),
  'scrim': SCRIM,
  'topscrim': TOPSCRIM,
 }
