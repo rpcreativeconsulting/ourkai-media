@@ -114,6 +114,14 @@ STORIES['2026-12-01_depth'] = ground(True) + _phases() + card(
     accent='Earth holds the turns between.')
 
 
+# Thu Nov 26 (US Thanksgiving): gratitude, tied to the Resource relationship (the element that produces your Day Master).
+# Proverb: yǐn shuǐ sī yuán, "when you drink water, think of its source" (Yu Xin, Northern Zhou), paraphrased.
+STORIES['2026-11-26_thanksgiving'] = ground(False) + card(
+    False, bottom=470, kicker='Thanksgiving', head='When you drink, remember the well.',
+    body='In BaZi, the element that feeds yours is called Resource: the people, teachers and quiet hours that keep you going.',
+    accent='Today, thank yours.')
+
+
 # Multi-frame Stories: name -> list of frames (saved as 1.png, 2.png ...)
 MULTI = {
     # Sat: posted right after the Slow read; both saved to Seasons
