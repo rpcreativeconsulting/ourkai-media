@@ -71,12 +71,12 @@ STORIES = {
         + card(False, bottom=470, kicker='The classical root', head='One hill. Two sides.',
                body='Yīn first meant the shaded slope of a hill, Yáng the sunlit one.',
                accent='Not two things. One hill, two kinds of light.'),
-    # Thu: find yourself, poll sticker in the empty lower half (Yang: push / Yin: hold); saved to Timing.
+    # Thu: find yourself, poll sticker in the empty lower half (Yang: I push / Yin: I hold); saved to You.
+    # Nov 27 (Ryan): headline simplified to 'Are you more Yin or Yang?' for beginners; 'more' keeps it a tendency.
     # v3.3 rework Nov 25: matches R02, asks which way they lean instead of asking them to diagnose themselves.
     '2026-11-26_find-yourself': ground(True)
-        + card(True, top=300, kicker='Find yourself', head='Which way do you lean?',
-               body='Lean Yang, and you push. Lean Yin, and you hold.',
-               accent='Can you switch when it matters?'),
+        + card(True, top=300, kicker='Find yourself', head='Are you more Yin or Yang?',
+               body='Lean Yang, and you push.', accent='Lean Yin, and you hold.'),
     # Sat: slow read
     '2026-11-28_slow-read': ground(False)
         + card(False, bottom=520, kicker='Slow read', head='Some days are for starting. Some are for staying in.'),
