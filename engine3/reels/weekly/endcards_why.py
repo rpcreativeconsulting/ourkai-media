@@ -9,8 +9,8 @@ def end(q,act,after):
       f'<img src="{LOCK}" style="position:absolute;left:50%;top:860px;width:280px;transform:translateX(-50%)">'
       f'<div style="position:absolute;left:0;right:0;top:1440px;text-align:center"><div class="k" style="color:{G};font-size:34px;letter-spacing:.28em">{act}</div>'
       f'<div class="b" style="color:#cfc6ae;font-size:36px;margin-top:22px">{after}</div></div>')
-c={'fe_ig':end(f'Want to know<br><span style="color:{G}">your mix?</span>','COMMENT OURKAI','Get notified when we release the app.'),
-   'fe_fb':end(f'Want to know<br><span style="color:{G}">your mix?</span>','OURKAI.IO','Get notified when we release the app.'),
-   'r4_ig':end(f'Want to see<br><span style="color:{G}">who you vibe with?</span>','COMMENT OURKAI','Get notified when we release the app.'),
-   'r4_fb':end(f'Want to see<br><span style="color:{G}">who you vibe with?</span>','OURKAI.IO','Get notified when we release the app.')}
+c={'fe_ig':end(f'Want to know<br><span style="color:{G}">your mix?</span>','COMMENT OURKAI','Get notified when the app drops.'),
+   'fe_fb':end(f'Want to know<br><span style="color:{G}">your mix?</span>','OURKAI.IO','Get notified when the app drops.'),
+   'r4_ig':end(f'Want to see<br><span style="color:{G}">who you vibe with?</span>','COMMENT OURKAI','Get notified when the app drops.'),
+   'r4_fb':end(f'Want to see<br><span style="color:{G}">who you vibe with?</span>','OURKAI.IO','Get notified when the app drops.')}
 render(c,'/home/claude/scratch/endwhy/f')
