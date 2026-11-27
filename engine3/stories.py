@@ -51,7 +51,7 @@ COVERS = {
     '1_start-here': (True, _svg('<circle cx="0" cy="-26" r="54"/><circle cx="-44" cy="24" r="54"/><circle cx="44" cy="24" r="54"/>', True, 5)),
     '2_download':   (False, _svg('<line x1="0" y1="-110" x2="0" y2="110"/>', False)),
     '3_seasons':    (True, _svg(_quarters(), True)),
-    '4_you':        (False, _zh('人', False)),
+    '4_you':        (True, _zh('人', True)),   # Nov 27 (Ryan): dark slate like Start here
     '5_timing':     (True, _zh('天', True)),
     '6_home':       (False, _zh('地', False)),
     '7_vibes':      (True, _svg('<circle cx="-46" cy="0" r="80"/><circle cx="46" cy="0" r="80"/>', True, 8)),
