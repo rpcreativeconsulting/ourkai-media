@@ -1,6 +1,6 @@
 import subprocess,sys
 SRC=sys.argv[1]; OUT=sys.argv[2]
-END=17.0; CLIP=12.0
+END=18.0; CLIP=12.0
 fc=[f"[0:v]setpts=1.2*PTS,fps=30,scale=1080:1920:flags=lanczos,setsar=1,"
     f"eq=gamma='1':brightness=0:eval=frame,"
     f"eq=brightness='if(between(t,6.6,9.4),0.035,0)':contrast='if(between(t,6.6,9.4),1.04,1)':eval=frame,"
