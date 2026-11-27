@@ -11,6 +11,6 @@ def end(q,act,after):
       f'<div class="b" style="color:#cfc6ae;font-size:36px;margin-top:22px">{after}</div></div>')
 c={'fe_ig':end(f'Want to know<br><span style="color:{G}">your mix?</span>','COMMENT OURKAI','Get notified when we release the app.'),
    'fe_fb':end(f'Want to know<br><span style="color:{G}">your mix?</span>','OURKAI.IO','Get notified when we release the app.'),
-   'r4_ig':end(f'Want to see<br><span style="color:{G}">who feeds you?</span>','COMMENT OURKAI','Get notified when we release the app.'),
-   'r4_fb':end(f'Want to see<br><span style="color:{G}">who feeds you?</span>','OURKAI.IO','Get notified when we release the app.')}
+   'r4_ig':end(f'Want to see<br><span style="color:{G}">who you vibe with?</span>','COMMENT OURKAI','Get notified when we release the app.'),
+   'r4_fb':end(f'Want to see<br><span style="color:{G}">who you vibe with?</span>','OURKAI.IO','Get notified when we release the app.')}
 render(c,'/home/claude/scratch/endwhy/f')
