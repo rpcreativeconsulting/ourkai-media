@@ -16,4 +16,5 @@ c['e1']=f'<div class="blk" style="top:800px;text-align:center"><div class="h" st
 c['e2']=f'<div class="blk" style="top:1110px;text-align:center"><div class="h" style="color:{G};font-size:110px">Including you.</div></div>'
 c['logo']=(f'<div style="position:absolute;inset:0;background:#0e0d0b"></div><img src="{LOCK}" style="position:absolute;left:50%;top:44%;width:340px;transform:translate(-50%,-50%)">'
            f'<div style="position:absolute;left:0;right:0;top:1260px;text-align:center"><div class="k" style="color:{G};font-size:34px;letter-spacing:.3em">COMMENT OURKAI</div></div>')
+c['logo_fb']=c['logo'].replace('COMMENT OURKAI','OURKAI.IO')
 render(c,'/home/claude/scratch/fe/f')

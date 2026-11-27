@@ -17,7 +17,7 @@ def add(png,st,en,slide=24,fi=0.3,fo=0.25):
                f"[{prev}][l{L}]overlay=y='{y}':eval=frame:eof_action=pass:enable='between(t,{st},{en})'[o{L}]"])
     prev=f'o{L}'; idx+=1; L+=1
 add('l1',0.25,2.6); add('l2',3.6,5.6); add('l3',5.8,7.5); add('l4',7.8,9.9); add('l5',10.1,11.8)
-add('e1',12.0,14.7,30,0.4); add('e2',12.9,14.7,20,0.4); add('logo',14.8,END,0,0.35,0.01)
+add('e1',12.0,14.7,30,0.4); add('e2',12.9,14.7,20,0.4); add(sys.argv[3] if len(sys.argv)>3 else 'logo',14.8,END,0,0.35,0.01)
 inp+=['-i','/home/claude/scratch/reel/bed.mp3']
 fc.append(f"[{idx}:a]atrim=0:{END},afade=t=in:d=0.6,afade=t=out:st={END-1.2}:d=1.2[au]")
 subprocess.run(['ffmpeg','-y','-v','error']+inp+['-filter_complex',';'.join(fc),'-map',f'[{prev}]','-map','[au]','-t',str(END),'-r','30',
