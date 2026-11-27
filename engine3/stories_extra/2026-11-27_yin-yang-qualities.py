@@ -2,8 +2,8 @@ import sys
 sys.path.insert(0,'/home/claude/ourkai-media/engine3'); sys.path.insert(0,'/home/claude/ourkai-media/engine3/reels')
 from cardlib import render
 G='#d4af6e'; INK='#f5efe0'; SOFT='#cfc6ae'
-yang=['Outgoing','Always on the go','Starts things','Talks it out','Up with the sun','Says yes first']
-yin=['Inward','Needs a nap','Finishes things','Thinks it through','Up past midnight','Says “let me think”']
+yang=['Outgoing','Always on the go','Starts things','Speaks first','Prefers day','Big energy']
+yin=['Introverted','Needs a nap','Finishes things','Listens first','Prefers night','Calm energy']
 def col(title,items,align):
     li=''.join(f'<div style="font-family:\'oK Source Serif\';font-size:44px;line-height:1.25;color:#efe7d2;margin-top:22px">{x}</div>' for x in items)
     return f'<div style="flex:1;text-align:{align}"><div class="k" style="color:{G};font-size:30px;letter-spacing:.3em">{title}</div><div style="width:48px;height:2px;background:{G};margin:18px 0 0 {"auto" if align=="right" else "0"}"></div>{li}</div>'
