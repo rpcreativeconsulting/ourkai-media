@@ -21,6 +21,7 @@ Fill (posting) order: 13, 18, 12, 17, 14, 16, 11, 15, 10.
 Nov 18 revision (Ryan chose set B): 10 frost on glass, 11 rings on water, 13 deep indigo (dark).
 13 is a deliberate dark corner: it breaks the light/dark checkerboard at 6 NW by choice.
 redwood and hills are retired from this grid (kept in BACKGROUNDS for reference).
+- Nov 26: post 14 time corrected 6:52 -> 6:53 PM Pacific to match NAOJ (the engine ran early; PR #2107); posts at 7:00 PM so it never goes up before the term arrives.
 - Nov 26: reader-first pass (Ryan approved): post 12 cover "One element for every season." -> "You don't feel the same all year." (old line kept as body); post 11 "Which element is your center? ... Which is yours?" -> "Your center is one of five. / Your chart shows which." (no guessing your own Day Master, lesson 37).
 - Nov 25: post 10 rewritten from "They're phases, not things." (a true layer stated as the whole, lesson 30) to "Five elements. More than five things." (Ryan approved the review fix).
 """
@@ -51,7 +52,7 @@ TILES = [
     dict(post=16, slug='everything-checked', template='sky', bg='rain', dark=True, kicker='The cycles', palace='3 · E · 16',
          head='Everything is checked by something.', body='Water puts out Fire. Fire melts Metal.', accent='The Controlling cycle.'),
     dict(post=14, slug='major-snow', template='character', bg='paper', dark=False, kicker='大雪 · Major Snow', palace='5 · Center · 14', char='大雪',
-         head='The darkest month begins.', body='Dec 6, 6:52 PM Pacific.', accent='Dec 7 in Asia.'),
+         head='The darkest month begins.', body='Dec 6, 6:53 PM Pacific.', accent='Dec 7 in Asia.'),
     dict(post=17, slug='feed-can-tire', template='plate', bg='slate', dark=True, kicker='The cycles', palace='7 · W · 17', art=('cycle', True, True),
          head='What you feed can tire you.', body='Fire burns through Wood. Wood drinks Water.', accent='The Weakening cycle.', cta='Save this'),
     dict(post=12, slug='every-season', template='plate', bg='paper', dark=False, kicker='The five elements', palace='8 · NE · 12', art=('five_seasons', False),
