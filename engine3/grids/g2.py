@@ -21,6 +21,7 @@ Fill (posting) order: 13, 18, 12, 17, 14, 16, 11, 15, 10.
 Nov 18 revision (Ryan chose set B): 10 frost on glass, 11 rings on water, 13 deep indigo (dark).
 13 is a deliberate dark corner: it breaks the light/dark checkerboard at 6 NW by choice.
 redwood and hills are retired from this grid (kept in BACKGROUNDS for reference).
+- Nov 26: reader-first pass (Ryan approved): post 12 cover "One element for every season." -> "You don't feel the same all year." (old line kept as body); post 11 "Which element is your center? ... Which is yours?" -> "Your center is one of five. / Your chart shows which." (no guessing your own Day Master, lesson 37).
 - Nov 25: post 10 rewritten from "They're phases, not things." (a true layer stated as the whole, lesson 30) to "Five elements. More than five things." (Ryan approved the review fix).
 """
 import os as _os
@@ -46,7 +47,7 @@ TILES = [
     dict(post=15, slug='everything-feeds', template='horizon', bg='ember', dark=True, kicker='The cycles', palace='9 · S · 15',
          head='Everything feeds something.', body='Wood feeds Fire. Fire makes Earth.', accent='The Production cycle.'),
     dict(post=11, slug='your-center', template='sky', bg='rings', dark=False, kicker='The five elements', palace='2 · SW · 11',
-         head='Which element is your center?', body='Your Day Master belongs to one of five.', accent='Which is yours?'),
+         head='Your center is one of five.', body='Your Day Master belongs to one element.', accent='Your chart shows which.'),
     dict(post=16, slug='everything-checked', template='sky', bg='rain', dark=True, kicker='The cycles', palace='3 · E · 16',
          head='Everything is checked by something.', body='Water puts out Fire. Fire melts Metal.', accent='The Controlling cycle.'),
     dict(post=14, slug='major-snow', template='character', bg='paper', dark=False, kicker='大雪 · Major Snow', palace='5 · Center · 14', char='大雪',
@@ -54,7 +55,7 @@ TILES = [
     dict(post=17, slug='feed-can-tire', template='plate', bg='slate', dark=True, kicker='The cycles', palace='7 · W · 17', art=('cycle', True, True),
          head='What you feed can tire you.', body='Fire burns through Wood. Wood drinks Water.', accent='The Weakening cycle.', cta='Save this'),
     dict(post=12, slug='every-season', template='plate', bg='paper', dark=False, kicker='The five elements', palace='8 · NE · 12', art=('five_seasons', False),
-         head='One element for every season.', body=None, accent=None, cta='Swipe for all five →', carousel='slides 2-5 to build'),
+         head="You don't feel the same all year.", body='One element for every season.', accent=None, cta='Swipe for all five →', carousel='slides 2-5 to build'),
     dict(post=18, slug='who-feeds-you', template='question', bg='slate', dark=True, kicker='Find yourself', palace='1 · N · 18',
          head='Who feeds you? Who drains you?', sub='The same three cycles run between people.', cta='Tag someone'),
     dict(post=13, slug='winter-water', template='character', bg='indigo', dark=True, kicker='Find yourself', palace='6 · NW · 13', char='水',
